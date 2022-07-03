@@ -10,6 +10,7 @@ class ComposerStaticInit73dba83455376f3e87cfb01282cb6ebd
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'TS\\Base\\ModuleBase' => __DIR__ . '/../..' . '/includes/base/module-base.php',
         'TS\\Base\\Widget_Base' => __DIR__ . '/../..' . '/includes/base/widget-base.php',
+        'TS\\Classes\\Dashboard' => __DIR__ . '/../..' . '/includes/classes/dashboard.php',
         'TS\\Classes\\ModuleManager' => __DIR__ . '/../..' . '/includes/classes/module-manager.php',
         'TS\\Helper' => __DIR__ . '/../..' . '/includes/helper.php',
         'TS\\Modules\\Woocommerce\\Module' => __DIR__ . '/../..' . '/includes/modules/woocommerce/module.php',

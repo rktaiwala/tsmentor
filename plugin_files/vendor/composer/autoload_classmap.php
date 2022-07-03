@@ -9,6 +9,7 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'TS\\Base\\ModuleBase' => $baseDir . '/includes/base/module-base.php',
     'TS\\Base\\Widget_Base' => $baseDir . '/includes/base/widget-base.php',
+    'TS\\Classes\\Dashboard' => $baseDir . '/includes/classes/dashboard.php',
     'TS\\Classes\\ModuleManager' => $baseDir . '/includes/classes/module-manager.php',
     'TS\\Helper' => $baseDir . '/includes/helper.php',
     'TS\\Modules\\Woocommerce\\Module' => $baseDir . '/includes/modules/woocommerce/module.php',
