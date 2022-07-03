@@ -27,7 +27,7 @@ class Plugin
         
         add_action('elementor/init', [$this, 'add_elementor_support']);
         add_action( 'plugins_loaded', [ $this, 'ts_plugins_loaded' ], 11 );
-        
+        $this->includes();
 
     }
 
@@ -72,19 +72,7 @@ class Plugin
     
     private function includes()
     {
-        
-       $paths=['/includes/base','/includes/classes','/includes/modules'];
-        foreach($paths as $path){
-            $dir      = new \RecursiveDirectoryIterator(TS_PRO_PATH.$path);
-            $iterator = new \RecursiveIteratorIterator($dir);
-            foreach ($iterator as $file) {
-                $fname = $file->getFilename();
-                if (preg_match('%\.php$%', $fname)) {
-                    //echo $fname;
-                    include($file->getPathname());
-                }
-            }
-        }
+		include_once( TS_PRO_PATH_INCLUDES . 'func/functions.php' );
     }
 
     public function get_ts_contants(){
