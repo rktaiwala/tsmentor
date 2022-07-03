@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=public_html/services.techsarathy.com/wp-content/plugins/tsmentor
+    - /bin/cp -R plugin_files $DEPLOYPATH
