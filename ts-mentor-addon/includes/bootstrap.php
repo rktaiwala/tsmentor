@@ -2,6 +2,7 @@
 
 namespace TS;
 use TS\Classes\ModuleManager;
+use TS\Classes\Dashboard;
 class Plugin
 {
 
@@ -40,6 +41,7 @@ class Plugin
 		}
         $this->get_ts_contants();
         self::$module_manager = new ModuleManager();
+        Dashboard::init();
     }
     
     public function ts_pro_fail_load() {

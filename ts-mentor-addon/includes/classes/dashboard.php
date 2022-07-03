@@ -200,4 +200,4 @@ class Dashboard {
 	}
 }
 
-Dashboard::init();
+
