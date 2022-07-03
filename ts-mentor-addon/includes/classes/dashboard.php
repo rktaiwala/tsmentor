@@ -92,6 +92,17 @@ class Dashboard {
             include( $file );
         }
     }
+    public static function get_tabs() {
+        $tabs = [
+            'home' => [
+                'title' => esc_html__( 'Home', 'ts-elementor-addons' ),
+                'renderer' => [ __CLASS__, 'render_home' ],
+            ],
+            
+        ];
+
+        return apply_filters( 'happyaddons_dashboard_get_tabs', $tabs );
+    }
     public static function add_menu() {
         self::$menu_slug = add_menu_page(
             __( 'TS Elementor Addons Dashboard', 'ts-elementor-addons' ),
