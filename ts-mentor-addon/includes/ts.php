@@ -14,6 +14,7 @@ class Ts {
 	public $_hook_positions = [];
 
 	public static $_helper = null;
+	public static $dashboard = null;
 
 	public static $module_manager = null;
 
@@ -49,6 +50,7 @@ class Ts {
 		
 
 		self::$_helper = new Helper();
+		self::$dashboard = new Dashboard();
 
 		
 
