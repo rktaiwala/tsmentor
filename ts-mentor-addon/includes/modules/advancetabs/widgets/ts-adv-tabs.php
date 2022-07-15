@@ -1,6 +1,6 @@
 <?php
 
-namespace TS\Modules\Woocommerce\Widgets;
+namespace TS\Modules\Advancetabs\Widgets;
 
 use TS\Ts;
 use TS\Base\Widget_Base;

@@ -56,7 +56,18 @@ class ModuleManager {
 				
 			],
 		];
+        $this->modules['advancetabs'] = [
+			'label'   => __( 'Advance Tabs', 'tsmentor' ),
+			'modules' => [
+				'advancetabs' => [
+					'label'         => __( 'Tabs Widgets', 'tsmentor' ),
+					'type'          => 'widget',
+					'enabled'       => true,
+				],
 
+				
+			],
+		];
 		$saved_modules = get_option( 'tsmentor_modules' );
 
 		if ( $saved_modules !== false ) {
