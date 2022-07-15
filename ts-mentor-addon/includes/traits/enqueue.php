@@ -43,8 +43,8 @@ trait Enqueue
             do_action('tsmentor/before_enqueue_scripts', $elements);
 
             
-        }
     }
+    
 
     // editor styles
     public function editor_enqueue_scripts()
