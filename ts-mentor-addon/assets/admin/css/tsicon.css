@@ -1,0 +1,257 @@
+@font-face {
+  font-family: 'tsicon';
+  src:  url('../fonts/tsicon.eot?7qa4dv');
+  src:  url('../fonts/tsicon.eot?7qa4dv#iefix') format('embedded-opentype'),
+    url('../fonts/tsicon.ttf?7qa4dv') format('truetype'),
+    url('../fonts/tsicon.woff?7qa4dv') format('woff'),
+    url('../fonts/tsicon.svg?7qa4dv#tsicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ts-"], [class*=" ts-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tsicon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ts-tab:before {
+  content: "\e900";
+}
+.ts-logo .path1:before {
+  content: "\e901";
+  color: rgb(0, 0, 0);
+}
+.ts-logo .path2:before {
+  content: "\e902";
+  margin-left: -1.2421875em;
+  color: rgb(255, 255, 255);
+}
+.ts-logo .path3:before {
+  content: "\e903";
+  margin-left: -1.2421875em;
+  color: rgb(255, 255, 255);
+}
+.ts-google-maps:before {
+  content: "\e904";
+}
+.ts-menu:before {
+  content: "\e905";
+}
+.ts-docs-category-grid:before {
+  content: "\e909";
+}
+.ts-docs-search-form:before {
+  content: "\e90a";
+}
+.ts-call-to-action:before {
+  content: "\e90c";
+}
+.ts-content-timeline:before {
+  content: "\e90f";
+}
+.ts-content-toggle:before {
+  content: "\e910";
+}
+.ts-countdown:before {
+  content: "\e911";
+}
+.ts-counter:before {
+  content: "\e912";
+}
+.ts-creative-button:before {
+  content: "\e913";
+}
+.ts-duplicator:before {
+  content: "\e917";
+}
+.ts-dynamic-gallery:before {
+  content: "\e918";
+}
+.ts-gravity-form:before {
+  content: "\e924";
+}
+.ts-image-accrodion:before {
+  content: "\e925";
+}
+.ts-image-comparison:before {
+  content: "\e926";
+}
+.ts-image-hotspots:before {
+  content: "\e927";
+}
+.ts-image-scroller:before {
+  content: "\e928";
+}
+.ts-info-box:before {
+  content: "\e929";
+}
+.ts-mailchimp:before {
+  content: "\e931";
+}
+.ts-forms:before {
+  content: "\e932";
+}
+.ts-offcanvas:before {
+  content: "\e933";
+}
+.ts-one-page-navigaton:before {
+  content: "\e934";
+}
+.ts-parallax-effects:before {
+  content: "\e935";
+}
+.ts-post-block:before {
+  content: "\e937";
+}
+.ts-post-carousel:before {
+  content: "\e938";
+}
+.ts-post-grid:before {
+  content: "\e939";
+}
+.ts-post-timeline:before {
+  content: "\e93a";
+}
+.ts-price-menu:before {
+  content: "\e93b";
+}
+.ts-pie:before {
+  content: "\e93e";
+}
+.ts-tooltip:before {
+  content: "\e949";
+}
+.ts-woo-product-collections:before {
+  content: "\e94d";
+}
+.ts-woo-checkout:before {
+  content: "\e94f";
+}
+.ts-menu-elementor:before {
+  content: "\e959";
+}
+.ts-ts-cart:before {
+  content: "\e95b";
+}
+.ts-circleinfo-widget:before {
+  content: "\e95c";
+}
+.ts-search:before {
+  content: "\e95d";
+}
+.ts-eye-solid:before {
+  content: "\e95f";
+}
+.ts-eye-slash-solid:before {
+  content: "\e960";
+}
+.ts-ban-solid:before {
+  content: "\e961";
+}
+.ts-equals-solid:before {
+  content: "\e964";
+}
+.ts-not-equal-solid:before {
+  content: "\e965";
+}
+.ts-folder-open-solid:before {
+  content: "\e966";
+}
+.ts-folder-open-regular:before {
+  content: "\e967";
+}
+.ts-user-solid:before {
+  content: "\e968";
+}
+.ts-user-slash-solid:before {
+  content: "\e969";
+}
+.ts-xmark-solid:before {
+  content: "\e96a";
+}
+.ts-check-solid:before {
+  content: "\e96b";
+}
+.ts-users-solid:before {
+  content: "\e96c";
+}
+.ts-ts-user-plus-solid:before {
+  content: "\e96d";
+}
+.ts-twitter:before {
+  content: "\f099";
+}
+.ts-facebook:before {
+  content: "\f09a";
+}
+.ts-github:before {
+  content: "\f09b";
+}
+.ts-arrow-circle-left:before {
+  content: "\f0a8";
+}
+.ts-arrow-circle-right:before {
+  content: "\f0a9";
+}
+.ts-arrow-circle-up:before {
+  content: "\f0aa";
+}
+.ts-arrow-circle-down:before {
+  content: "\f0ab";
+}
+.ts-globe:before {
+  content: "\f0ac";
+}
+.ts-sitemap:before {
+  content: "\f0e8";
+}
+.ts-inr:before {
+  content: "\f156";
+}
+.ts-sliders:before {
+  content: "\f1de";
+}
+.ts-wifi:before {
+  content: "\f1eb";
+}
+.ts-map-o:before {
+  content: "\f278";
+}
+.ts-ts-map:before {
+  content: "\f279";
+}
+.ts-params:before {
+  content: "\e906";
+}
+.ts-droplet:before {
+  content: "\e90d";
+}
+.ts-image:before {
+  content: "\e90e";
+}
+.ts-images:before {
+  content: "\e914";
+}
+.ts-camera:before {
+  content: "\e915";
+}
+.ts-music:before {
+  content: "\e916";
+}
+.ts-play:before {
+  content: "\e919";
+}
+.ts-film:before {
+  content: "\e91a";
+}

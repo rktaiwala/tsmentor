@@ -79,6 +79,9 @@ class Dashboard {
     public static function render_main() {
         self::load_template( 'main' );
     }
+    public static function render_home() {
+        self::load_template( 'home' );
+    }
     private static function load_template( $template ) {
         $file = TS_PRO_PATH_INCLUDES . 'templates/admin/dashboard-' . $template . '.php';
         if ( is_readable( $file ) ) {
@@ -114,15 +117,7 @@ class Dashboard {
             58.5
         );
 
-        self::$wizard_slug =  add_menu_page(
-            __( 'Setup Wizard', 'ts-elementor-addons' ),
-            __( 'Setup Wizard', 'ts-elementor-addons' ),
-            'manage_options',
-            self::WIZARD_PAGE_SLUG,
-            [ __CLASS__, 'wizard_page_wrapper'],
-            '',
-            null
-        );
+        
 
         $tabs = self::get_tabs();
         if ( is_array( $tabs ) ) {

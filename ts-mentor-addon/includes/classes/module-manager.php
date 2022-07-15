@@ -44,20 +44,20 @@ class ModuleManager {
 		$this->modules = [];
 
 	   $this->modules['woocommerce'] = [
-			'label'   => __( 'WooCommerce Integration', 'ae-pro' ),
+			'label'   => __( 'WooCommerce Integration', 'tsmentor' ),
 			'modules' => [
 				'woocommerce' => [
-					'label'         => __( 'WooCommerce Widgets', 'ae-pro' ),
+					'label'         => __( 'WooCommerce Widgets', 'tsmentor' ),
 					'type'          => 'widget',
 					'enabled'       => true,
-					'not-available' => __( "Requires 'WooCommerce' plugin installed and activated", 'ae-pro' ),
+					'not-available' => __( "Requires 'WooCommerce' plugin installed and activated", 'tsmentor' ),
 				],
 
 				
 			],
 		];
 
-		$saved_modules = get_option( 'aep_modules' );
+		$saved_modules = get_option( 'tsmentor_modules' );
 
 		if ( $saved_modules !== false ) {
 			foreach ( $this->modules as $group => $modules ) {
@@ -109,7 +109,7 @@ class ModuleManager {
 		$module_data = $_POST['moduleData'];
 
 		// get saved modules
-		$saved_modules = get_option( 'ts_modules' );
+		$saved_modules = get_option( 'tsmentor_modules' );
 
 		foreach ( $module_data as $key => $action ) {
 
@@ -120,7 +120,7 @@ class ModuleManager {
 			}
 		}
 
-		update_option( 'ts_modules', $saved_modules );
+		update_option( 'tsmentor_modules', $saved_modules );
 
 		wp_send_json(
 			[
