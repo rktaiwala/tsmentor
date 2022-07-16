@@ -92,7 +92,7 @@ abstract class ModuleBase {
 		return [];
 	}
     
-    public function get_enqueuable() {
+    public static function get_enqueuable() {
 		return [];
 	}
     

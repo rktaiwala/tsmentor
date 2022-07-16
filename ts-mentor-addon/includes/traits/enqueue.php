@@ -44,8 +44,7 @@ trait Enqueue
             false,
             time()
         );
-            // run hook before enqueue scripts
-            do_action('tsmentor/before_enqueue_scripts', $elements);
+            
         
         // edit mode
         if ($this->is_edit_mode()) {
@@ -56,19 +55,20 @@ trait Enqueue
                 return;
             }
 
-
-            foreach($widgets as $group => $widget ) {
+            // run hook before enqueue scripts
+            do_action('tsmentor/before_enqueue_scripts', $widgets);
+            foreach($widgets  as $group => $widget ) {
 
 				foreach ( $widget['modules'] as $modulekey => $module ) {
                    
 					if ( $module['enabled'] ) {
-						$class_name = str_replace( '-', ' ', $key );
+						$class_name = str_replace( '-', ' ', $modulekey );
 						$class_name = str_replace( ' ', '', ucwords( $class_name ) );
 						$class_name = 'TS\Modules\\' . $class_name . '\Module';
 						$enqueable=$class_name::get_enqueuable();
 						
 					}
-                    if(empty($enqueable)) return;
+                    if(empty($enqueable)) continue;
                     
                     foreach($enqueable as $type=>$enqueue){
                         

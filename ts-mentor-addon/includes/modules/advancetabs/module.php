@@ -21,7 +21,7 @@ class Module extends ModuleBase {
 		];
 	}
     
-    public function get_enqueuable(){
+    public static function get_enqueuable(){
         return [
             'css' => [
                     [
