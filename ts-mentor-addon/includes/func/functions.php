@@ -16,7 +16,7 @@ function ts_get_b64_icon() {
 
 function get_module_widget_data( $widget_file, $markup = true, $translate = true ) {
     $default_headers = array(
-        'Name'        => 'Widget Name',
+        'Name'        => 'Module Name',
         'Type'        => 'Type',
         'Enabled'     => 'Enabled',
         'Dir'         => 'Dir',
@@ -84,7 +84,7 @@ function scan_widgets($widget_folder=''){
             continue;
         }
 
-        $ts_widgets[ $widget_data['Dir'] ][] = $widget_data;
+        $ts_widgets[ $widget_data['Dir'] ] = $widget_data;
     }
 
     //uasort( $wp_plugins, '_sort_uname_callback' );
