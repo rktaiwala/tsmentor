@@ -1,5 +1,10 @@
 <?php
-
+/*
+Module Name: Woocommerce
+Type: widget
+Enabled: true
+Dir: woocommerce
+*/
 namespace TS\Modules\Woocommerce;
 
 use TS\Base\ModuleBase;

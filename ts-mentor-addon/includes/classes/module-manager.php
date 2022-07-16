@@ -44,8 +44,9 @@ class ModuleManager {
 	public function init_modules() {
 		// Test Work
 		$this->modules = [];
-        var_dump(scan_widgets());
-	   $this->modules['woocommerce'] = [
+        $scaned_widgets=scan_widgets();
+        var_dump($scaned_widgets);
+	   /*$this->modules['woocommerce'] = [
 			'label'   => __( 'WooCommerce Integration', 'tsmentor' ),
 			'modules' => [
 				'woocommerce' => [
@@ -69,7 +70,11 @@ class ModuleManager {
 
 				
 			],
-		];
+		];*/
+        /*foreach($scaned_widgets as $wid_key=>$wid_arr){
+            
+            
+        }*/
 		$saved_modules = get_option( 'tsmentor_modules' );
 
 		if ( $saved_modules !== false ) {

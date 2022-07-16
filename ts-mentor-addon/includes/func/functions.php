@@ -47,7 +47,7 @@ function scan_widgets($widget_folder=''){
             }
 
             if ( is_dir( $widgets_root . '/' . $file ) ) {
-                $widgets_subdir = @opendir( $widgets_root . '/' . $file .'/widgets');
+                $widgets_subdir = @opendir( $widgets_root . '/' . $file );
 
                 if ( $widgets_subdir ) {
                     while ( ( $subfile = readdir( $widgets_subdir ) ) !== false ) {
@@ -84,7 +84,7 @@ function scan_widgets($widget_folder=''){
             continue;
         }
 
-        $ts_widgets[ $widget_data['Dir'] ] = $widget_data;
+        $ts_widgets[ $widget_data['Dir'] ][] = $widget_data;
     }
 
     //uasort( $wp_plugins, '_sort_uname_callback' );
