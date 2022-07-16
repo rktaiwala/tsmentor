@@ -57,7 +57,7 @@ trait Enqueue
             }
 
 
-            foreach($widgets as as $group => $widget ) {
+            foreach($widgets as $group => $widget ) {
 
 				foreach ( $widget['modules'] as $modulekey => $module ) {
                    
