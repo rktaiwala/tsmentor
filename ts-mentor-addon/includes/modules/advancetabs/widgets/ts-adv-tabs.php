@@ -994,7 +994,7 @@ class TsAdvTabs extends Widget_Base {
             </div>
             <div class="ts-tabs-content">
 		        <?php foreach ($settings['ts_adv_tabs_tab'] as $tab) :
-			        $ts_find_default_tab[] = $tab['ets_adv_tabs_tab_show_as_default'];
+			        $ts_find_default_tab[] = $tab['ts_adv_tabs_tab_show_as_default'];
 			        $tab_id = $tab['ts_adv_tabs_tab_id'] ? $tab['ts_adv_tabs_tab_id'] : Ts::$_helper::str_to_css_id( $tab['ts_adv_tabs_tab_title'] );
 			        $tab_id = $tab_id === 'safari' ? 'tsl-safari-tab' : $tab_id . '-tab'; ?>
 
