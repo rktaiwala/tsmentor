@@ -1,5 +1,10 @@
 <?php
-
+/*
+Widget Name: Woocommerce Title
+Type: widget
+Enabled: true
+Dir: woocommerce
+*/
 namespace TS\Modules\Woocommerce\Widgets;
 
 use TS\Ts;

@@ -1,5 +1,10 @@
 <?php
-
+/*
+Widget Name: Advanced Tabs
+Type: widget
+Enabled: true
+Dir: advancetabs
+*/
 namespace TS\Modules\Advancetabs\Widgets;
 
 use TS\Ts;

@@ -39,10 +39,10 @@ class Plugin
 
     private function __construct()
     {		
-        
+        $this->includes();
         add_action('elementor/init', [$this, 'add_elementor_support']);
         add_action( 'plugins_loaded', [ $this, 'ts_plugins_loaded' ], 11 );
-        $this->includes();
+        
         // register hooks
         
     }

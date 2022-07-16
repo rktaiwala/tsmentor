@@ -39,10 +39,12 @@ class ModuleManager {
 		);
 	}
 
+    
+    
 	public function init_modules() {
 		// Test Work
 		$this->modules = [];
-
+        var_dump(scan_widgets());
 	   $this->modules['woocommerce'] = [
 			'label'   => __( 'WooCommerce Integration', 'tsmentor' ),
 			'modules' => [

@@ -1,4 +1,10 @@
 <?php
+/*
+Widget Name: Related Products Current Category
+Type: widget
+Enabled: true
+Dir: woocommerce
+*/
 namespace TS\Modules\Woocommerce\Widgets;
 use TS\Base\Widget_Base;
 use Elementor\Controls_Manager;
