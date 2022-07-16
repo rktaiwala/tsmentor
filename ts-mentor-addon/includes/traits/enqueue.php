@@ -38,10 +38,75 @@ trait Enqueue
             'cart_page_url' =>  apply_filters('tsmentor/is_plugin_active', 'woocommerce/woocommerce.php') ? wc_get_cart_url():'',
 	    ] );
 
-        
+        wp_enqueue_script(
+            $this->uid.'gen',
+            $this->safe_url(TS_PRO_ASSET_URL . '/js/general.min.js'),
+            false,
+            time()
+        );
             // run hook before enqueue scripts
             do_action('tsmentor/before_enqueue_scripts', $elements);
+        
+        // edit mode
+        if ($this->is_edit_mode()) {
+            $widgets = $this->module_manager->get_modules();
 
+            // if no widget in page, return
+            if (empty($widgets)) {
+                return;
+            }
+
+
+            foreach($widgets as as $group => $widget ) {
+
+				foreach ( $widget['modules'] as $modulekey => $module ) {
+                   
+					if ( $module['enabled'] ) {
+						$class_name = str_replace( '-', ' ', $key );
+						$class_name = str_replace( ' ', '', ucwords( $class_name ) );
+						$class_name = 'TS\Modules\\' . $class_name . '\Module';
+						$enqueable=$class_name::get_enqueuable();
+						
+					}
+                    if(empty($enqueable)) return;
+                    
+                    foreach($enqueable as $type=>$enqueue){
+                        
+                        if($type=='css'){
+                            // enqueue
+                            foreach($enqueue as $style){
+                                wp_enqueue_style(
+                                    $this->uid.$style['name'],
+                                    $this->safe_url(TS_PRO_ASSET_URL . '/css/' . $style['file']. '.css'),
+                                    false,
+                                    time()
+                                );
+                            }
+                            
+                        }
+                        if($type=='js'){
+                            foreach($enqueue as $script){
+                                wp_enqueue_script(
+                                    $this->uid.$script['name'],
+                                    $this->safe_url(TS_PRO_ASSET_URL . '/js/' . $script['file']. '.js'),
+                                    false,
+                                    time()
+                                );
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    
+				}
+                
+            }
+            
+            
+
+            
+        }
             
     }
     

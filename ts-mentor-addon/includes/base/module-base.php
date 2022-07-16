@@ -91,7 +91,12 @@ abstract class ModuleBase {
 	public function get_widgets() {
 		return [];
 	}
-
+    
+    public function get_enqueuable() {
+		return [];
+	}
+    
+    
 	public function register_ajax_actions( $ajax_manager ) {
 	}
 }

@@ -24,7 +24,7 @@ class Plugin
     // used to store custom js
     protected $custom_js_strings;
     
-    public static $module_manager = null;
+    private  $module_manager = null;
     private static $_instance = null;
 
 	public static $_level = 0;
@@ -85,7 +85,7 @@ class Plugin
 			return;
 		}
         $this->get_ts_contants();
-        self::$module_manager = new ModuleManager();
+        $this->module_manager = new ModuleManager();
         Dashboard::init();
         $this->register_hooks();
     }

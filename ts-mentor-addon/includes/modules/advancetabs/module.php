@@ -21,7 +21,24 @@ class Module extends ModuleBase {
 		];
 	}
     
-    
+    public function get_enqueuable(){
+        return [
+            'css' => [
+                    [
+                        'file' => 'advanced-tabs.min',
+                        'name' => 'adv-tab-css',
+                        
+                    ],
+                ],
+            'js' => [
+                [
+                    'file' => 'advanced-tabs.min',
+                    'name' => 'adv-tab-js',
+                    
+                ],
+            ],
+        ];
+    }
 
     
 }

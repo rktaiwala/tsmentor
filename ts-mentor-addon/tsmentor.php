@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 define( 'TS_PRO_VERSION', '2.25' );
 define( 'TS_PRO_URL', plugins_url( '/', __FILE__ ) );
+define( 'TS_PRO_ASSET_URL', TS_PRO_URL.'/assets/' );
 define( 'TS_PRO_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TS_PRO_PATH_INCLUDES', TS_PRO_PATH.'includes/' );
 define( 'TS_PRO_PATH_MODULES', TS_PRO_PATH_INCLUDES.'modules' );
