@@ -11,14 +11,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-define( 'TS_PRO_VERSION', '2.25' );
-define( 'TS_PRO_URL', plugins_url( '/', __FILE__ ) );
-define( 'TS_PRO_ASSET_URL', TS_PRO_URL.'/assets/' );
-define( 'TS_PRO_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TS_PRO_PATH_INCLUDES', TS_PRO_PATH.'includes/' );
-define( 'TS_PRO_PATH_MODULES', TS_PRO_PATH_INCLUDES.'modules' );
-define( 'TS_PRO_BASE', plugin_basename( __FILE__ ) );
-define( 'TS_PRO_FILE', __FILE__ );
+define( 'TS_MENTOR_VERSION', '2.25' );
+define( 'TS_MENTOR_URL', plugins_url( '/', __FILE__ ) );
+define( 'TS_MENTOR_ASSET_URL', TS_PRO_URL.'/assets/' );
+define( 'TS_MENTOR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TS_MENTOR_PATH_INCLUDES', TS_PRO_PATH.'includes/' );
+define( 'TS_MENTOR_PATH_MODULES', TS_PRO_PATH_INCLUDES.'modules' );
+define( 'TS_MENTOR_BASE', plugin_basename( __FILE__ ) );
+define( 'TS_MENTOR_FILE', __FILE__ );
 //function ts_mentor_addon() {
     
     if ( ! is_plugin_active( 'elementor/elementor.php' ) ) {

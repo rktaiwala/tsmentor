@@ -8,7 +8,7 @@ use Elementor\Controls_Manager;
 class ModuleManager {
 
 
-	const TAB_TS_PRO = 'tab_ts_pro';
+	const TAB_TS_MENTOR = 'tab_ts_mentor';
 
 	private $modules = [];
 

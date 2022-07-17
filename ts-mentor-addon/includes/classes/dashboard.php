@@ -29,7 +29,7 @@ class Dashboard {
         add_action( 'wp_ajax_' . self::WIDGETS_NONCE, [ __CLASS__, 'save_data' ] );
 
         //add_action( 'admin_init', [ __CLASS__, 'activation_redirect' ] );
-        add_filter( 'plugin_action_links_' . plugin_basename( HAPPY_ADDONS__FILE__ ), [ __CLASS__, 'add_action_links' ] );
+        add_filter( 'plugin_action_links_' . plugin_basename( TS_MENTOR_FILE ), [ __CLASS__, 'add_action_links' ] );
 
         //add_action( 'ts_save_dashboard_data', [ __CLASS__, 'save_widgets_data' ], 1);
         //add_action( 'ts_save_dashboard_data', [ __CLASS__, 'save_features_data' ] );
@@ -62,14 +62,14 @@ class Dashboard {
         $links = array_merge( [
             sprintf( '<a href="%s">%s</a>',
                 ts_get_dashboard_link(),
-                esc_html__( 'Settings', 'ts-elementor-addons' )
+                esc_html__( 'Settings', 'tsmentor' )
             )
         ], $links );
         if ( ! ts_has_pro() ) {
             $links = array_merge( $links, [
                 sprintf( '<a target="_blank" style="color:#e2498a; font-weight: bold;" href="%s">%s</a>',
                     'https://techsarathy.com/go/get-pro',
-                    esc_html__( 'Get Pro', 'ts-elementor-addons' )
+                    esc_html__( 'Get Pro', 'tsmentor' )
                 )
             ] );
         }
@@ -83,14 +83,14 @@ class Dashboard {
         self::load_template( 'home' );
     }
     private static function load_template( $template ) {
-        $file = TS_PRO_PATH_INCLUDES . 'templates/admin/dashboard-' . $template . '.php';
+        $file = TS_MENTOR_PATH_INCLUDES . 'templates/admin/dashboard-' . $template . '.php';
         if ( is_readable( $file ) ) {
             include( $file );
         }
     }
 
     private static function load_wizard_template( $template ) {
-        $file = TS_PRO_PATH_INCLUDES . 'templates/wizard/wizard-' . $template . '.php';
+        $file = TS_MENTOR_PATH_INCLUDES . 'templates/wizard/wizard-' . $template . '.php';
         if ( is_readable( $file ) ) {
             include( $file );
         }

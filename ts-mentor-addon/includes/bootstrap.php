@@ -121,7 +121,7 @@ class Plugin
     
     private function includes()
     {
-		include_once( TS_PRO_PATH_INCLUDES . 'func/functions.php' );
+		include_once( TS_MENTOR_PATH_INCLUDES . 'func/functions.php' );
     }
 
     public function get_ts_contants(){

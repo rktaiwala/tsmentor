@@ -40,7 +40,7 @@ trait Enqueue
 
         wp_enqueue_script(
             $this->uid.'gen',
-            $this->safe_url(TS_PRO_ASSET_URL . '/js/general.min.js'),
+            $this->safe_url(TS_MENTOR_ASSET_URL . '/js/general.min.js'),
             false,
             time()
         );
@@ -77,7 +77,7 @@ trait Enqueue
                             foreach($enqueue as $style){
                                 wp_enqueue_style(
                                     $this->uid.$style['name'],
-                                    $this->safe_url(TS_PRO_ASSET_URL . '/css/' . $style['file']. '.css'),
+                                    $this->safe_url(TS_MENTOR_ASSET_URL . '/css/' . $style['file']. '.css'),
                                     false,
                                     time()
                                 );
@@ -88,7 +88,7 @@ trait Enqueue
                             foreach($enqueue as $script){
                                 wp_enqueue_script(
                                     $this->uid.$script['name'],
-                                    $this->safe_url(TS_PRO_ASSET_URL . '/js/' . $script['file']. '.js'),
+                                    $this->safe_url(TS_MENTOR_ASSET_URL . '/js/' . $script['file']. '.js'),
                                     false,
                                     time()
                                 );
@@ -117,9 +117,9 @@ trait Enqueue
         // ea icon font
         wp_enqueue_style(
             'ts-icon',
-            $this->safe_url(TS_PRO_URL . 'assets/admin/css/tsicon.css'),
+            $this->safe_url(TS_MENTOR_URL . 'assets/admin/css/tsicon.css'),
             false,
-	        TS_PRO_VERSION
+	        TS_MENTOR_VERSION
         );
 
         

@@ -30,7 +30,7 @@ function get_module_widget_data( $widget_file, $markup = true, $translate = true
 function scan_widgets($widget_folder=''){
         
     $ts_widgets  = array();
-    $widgets_root = TS_PRO_PATH_MODULES;
+    $widgets_root = TS_MENTOR_PATH_MODULES;
 
     if ( ! empty( $widget_folder ) ) {
         $widgets_root .= $widget_folder;

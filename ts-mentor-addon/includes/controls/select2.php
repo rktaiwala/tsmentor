@@ -17,7 +17,7 @@ class Select2 extends Base_Data_Control
     }
 
 	public function enqueue() {
-		wp_register_script( 'ts-select2', TS_PRO_ASSET_URL . '/js/edit/select2.js',
+		wp_register_script( 'ts-select2', TS_MENTOR_ASSET_URL . '/js/edit/select2.js',
 			[ 'jquery-elementor-select2' ], '1.0.1', true );
 		wp_localize_script(
 			'ts-select2',

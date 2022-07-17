@@ -64,7 +64,7 @@ class TsAdvTabs extends Widget_Base {
                     foreach($enqueue as $style){
                         wp_register_style(
                             $style['name'],
-                            (TS_PRO_ASSET_URL . '/css/' . $style['file']. '.css'),
+                            (TS_MENTOR_ASSET_URL . '/css/' . $style['file']. '.css'),
                             false,
                         );
                         $styles[]=$style['name'];
@@ -86,7 +86,7 @@ class TsAdvTabs extends Widget_Base {
                     foreach($enqueue as $script){
                         wp_enqueue_script(
                             $script['name'],
-                            (TS_PRO_ASSET_URL . '/js/' . $script['file']. '.js'),
+                            (TS_MENTOR_ASSET_URL . '/js/' . $script['file']. '.js'),
                             false,
                         );
                         $scripts[]=$script['name'];
