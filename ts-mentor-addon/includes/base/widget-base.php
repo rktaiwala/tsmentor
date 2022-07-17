@@ -18,4 +18,12 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
 
 		return \TS\Ts::$_widget_debug;
 	}
+    
+    public function get_script_depends() {
+        
+        return [];
+    }
+    public function get_style_depends() {
+        return [];
+    }
 }

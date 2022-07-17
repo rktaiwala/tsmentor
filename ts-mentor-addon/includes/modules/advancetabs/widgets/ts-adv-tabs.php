@@ -18,7 +18,7 @@ use Elementor\Icons_Manager;
 use \Elementor\Plugin;
 use Elementor\Repeater;
 use \Elementor\Utils;
-
+use TS\Modules\Advancetabs\Module as AdvModule;
 
 class TsAdvTabs extends Widget_Base {
 
@@ -52,7 +52,52 @@ class TsAdvTabs extends Widget_Base {
 			'tabs',
 		];
 	}
+    
+    public function get_style_depends() {
+        $styles=[];
+        $enqueable=AdvModule::get_enqueuable();
+        if(!empty($enqueable)){
+            foreach($enqueable as $type=>$enqueue){
+                        
+                if($type=='css'){
+                    // enqueue
+                    foreach($enqueue as $style){
+                        wp_register_style(
+                            $style['name'],
+                            (TS_PRO_ASSET_URL . '/css/' . $style['file']. '.css'),
+                            false,
+                        );
+                        $styles[]=$style['name'];
+                    }
 
+                }
+            }
+        }
+        return $styles;
+    }
+    public function get_script_depends() {
+
+		$scripts=[];
+        $enqueable=AdvModule::get_enqueuable();
+        if(!empty($enqueable)){
+            foreach($enqueable as $type=>$enqueue){
+                        
+                if($type=='js'){
+                    foreach($enqueue as $script){
+                        wp_enqueue_script(
+                            $this->uid.$script['name'],
+                            $this->safe_url(TS_PRO_ASSET_URL . '/js/' . $script['file']. '.js'),
+                            false,
+                        );
+                        $scripts[]=$script['name'];
+                    }
+
+                }
+            }
+        }
+        return $scripts;
+
+	}
 	//phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
 	public function register_controls() {
 		/**
