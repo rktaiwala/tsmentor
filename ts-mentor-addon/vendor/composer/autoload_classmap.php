@@ -11,6 +11,7 @@ return array(
     'TS\\Base\\Widget_Base' => $baseDir . '/includes/base/widget-base.php',
     'TS\\Classes\\Dashboard' => $baseDir . '/includes/classes/dashboard.php',
     'TS\\Classes\\ModuleManager' => $baseDir . '/includes/classes/module-manager.php',
+    'TS\\Controls\\Select2' => $baseDir . '/includes/controls/select2.php',
     'TS\\Helper' => $baseDir . '/includes/helper.php',
     'TS\\Modules\\Advancetabs\\Module' => $baseDir . '/includes/modules/advancetabs/module.php',
     'TS\\Modules\\Advancetabs\\Widgets\\TsAdvTabs' => $baseDir . '/includes/modules/advancetabs/widgets/ts-adv-tabs.php',

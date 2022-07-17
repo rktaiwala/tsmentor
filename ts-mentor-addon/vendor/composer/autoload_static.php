@@ -12,6 +12,7 @@ class ComposerStaticInit73dba83455376f3e87cfb01282cb6ebd
         'TS\\Base\\Widget_Base' => __DIR__ . '/../..' . '/includes/base/widget-base.php',
         'TS\\Classes\\Dashboard' => __DIR__ . '/../..' . '/includes/classes/dashboard.php',
         'TS\\Classes\\ModuleManager' => __DIR__ . '/../..' . '/includes/classes/module-manager.php',
+        'TS\\Controls\\Select2' => __DIR__ . '/../..' . '/includes/controls/select2.php',
         'TS\\Helper' => __DIR__ . '/../..' . '/includes/helper.php',
         'TS\\Modules\\Advancetabs\\Module' => __DIR__ . '/../..' . '/includes/modules/advancetabs/module.php',
         'TS\\Modules\\Advancetabs\\Widgets\\TsAdvTabs' => __DIR__ . '/../..' . '/includes/modules/advancetabs/widgets/ts-adv-tabs.php',

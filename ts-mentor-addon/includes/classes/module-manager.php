@@ -24,8 +24,26 @@ class ModuleManager {
 		add_action( 'wp_ajax_aep_save_config', [ $this, 'save_config' ] );
 
 		add_action( 'elementor/elements/categories_registered', [ $this, 'register_category' ], -999 );
-
+        if ( defined( 'ELEMENTOR_VERSION' ) ) {
+		    if ( version_compare( ELEMENTOR_VERSION, '3.5.0', '>=' ) ) {
+			    add_action( 'elementor/controls/register', array( $this, 'register_controls' ) );
+		    } else {
+			    add_action( 'elementor/controls/controls_registered', array( $this, 'register_controls' ) );
+		    }
+	    }
 		
+	}
+    /**
+	 * Register custom controls
+	 *
+	 * @since v4.4.2
+	 */
+	public function register_controls( $controls_manager ) {
+		if ( version_compare( ELEMENTOR_VERSION, '3.5.0', '>=' ) ) {
+			$controls_manager->register( new \TS\Controls\Select2() );
+		} else {
+			$controls_manager->register_control( 'eael-select2', new \TS\Controls\Select2() );
+		}
 	}
 
 	public function register_category($elements_manager) {
