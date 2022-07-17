@@ -104,7 +104,7 @@ class Dashboard {
             
         ];
 
-        return apply_filters( 'happyaddons_dashboard_get_tabs', $tabs );
+        return apply_filters( 'tsmentor_dashboard_get_tabs', $tabs );
     }
     public static function add_menu() {
         self::$menu_slug = add_menu_page(
