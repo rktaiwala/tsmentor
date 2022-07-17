@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 define( 'TS_MENTOR_VERSION', '2.25' );
 define( 'TS_MENTOR_URL', plugins_url( '/', __FILE__ ) );
-define( 'TS_MENTOR_ASSET_URL', TS_PRO_URL.'/assets/' );
+define( 'TS_MENTOR_ASSET_URL', TS_MENTOR_URL.'/assets/' );
 define( 'TS_MENTOR_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TS_MENTOR_PATH_INCLUDES', TS_PRO_PATH.'includes/' );
-define( 'TS_MENTOR_PATH_MODULES', TS_PRO_PATH_INCLUDES.'modules' );
+define( 'TS_MENTOR_PATH_INCLUDES', TS_MENTOR_PATH.'includes/' );
+define( 'TS_MENTOR_PATH_MODULES', TS_MENTOR_PATH_INCLUDES.'modules' );
 define( 'TS_MENTOR_BASE', plugin_basename( __FILE__ ) );
 define( 'TS_MENTOR_FILE', __FILE__ );
 //function ts_mentor_addon() {
@@ -30,8 +30,8 @@ define( 'TS_MENTOR_FILE', __FILE__ );
        //     require($file);   
        // }
         
-        require_once TS_PRO_PATH . 'vendor/autoload.php';
-        require TS_PRO_PATH . 'includes/bootstrap.php';
+        require_once TS_MENTOR_PATH . 'vendor/autoload.php';
+        require TS_MENTOR_PATH . 'includes/bootstrap.php';
     }
 	
 

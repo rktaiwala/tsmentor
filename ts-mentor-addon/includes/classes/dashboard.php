@@ -29,7 +29,7 @@ class Dashboard {
         add_action( 'wp_ajax_' . self::WIDGETS_NONCE, [ __CLASS__, 'save_data' ] );
 
         //add_action( 'admin_init', [ __CLASS__, 'activation_redirect' ] );
-        add_filter( 'plugin_action_links_' . plugin_basename( TS_MENTOR_FILE ), [ __CLASS__, 'add_action_links' ] );
+        add_filter( 'plugin_action_links_' . TS_MENTOR_BASE, [ __CLASS__, 'add_action_links' ] );
 
         //add_action( 'ts_save_dashboard_data', [ __CLASS__, 'save_widgets_data' ], 1);
         //add_action( 'ts_save_dashboard_data', [ __CLASS__, 'save_features_data' ] );
