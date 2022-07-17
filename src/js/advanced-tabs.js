@@ -90,7 +90,7 @@ ts.hooks.addAction("init", "ts", () => {
 				.addClass("active")
 				.removeClass("inactive");
 
-                ea.hooks.doAction("ts-advanced-tabs-triggered", $(tabsContent).eq(currentTabIndex));
+                ts.hooks.doAction("ts-advanced-tabs-triggered", $(tabsContent).eq(currentTabIndex));
 				
 				$(tabsContent).each(function (index) {
 					$(this).removeClass("active-default");
