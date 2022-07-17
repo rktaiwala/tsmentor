@@ -19,7 +19,7 @@ return array(
     'TS\\Modules\\Woocommerce\\Widgets\\TsWooRpByCat' => $baseDir . '/includes/modules/woocommerce/widgets/rp.php',
     'TS\\Modules\\Woocommerce\\Widgets\\TsWooTitle' => $baseDir . '/includes/modules/woocommerce/widgets/ts-woo-title.php',
     'TS\\Plugin' => $baseDir . '/includes/bootstrap.php',
-    'TS\\Traits\\Ajax_Handler' => $baseDir . '/includes/traits/ajax.php',
+    'TS\\Traits\\Ajax' => $baseDir . '/includes/traits/ajax.php',
     'TS\\Traits\\Core' => $baseDir . '/includes/traits/core.php',
     'TS\\Traits\\Enqueue' => $baseDir . '/includes/traits/enqueue.php',
     'TS\\Traits\\Generator' => $baseDir . '/includes/traits/generator.php',

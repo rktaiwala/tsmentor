@@ -62,7 +62,7 @@ class Select2 extends Base_Data_Control
             <# } #>
             <div class="elementor-control-input-wrapper elementor-control-unit-5">
                 <# var multiple = ( data.multiple ) ? 'multiple' : ''; #>
-                <select id="<?php echo esc_attr( $control_uid ); ?>" {{ multiple }} class="ea-select2" data-setting="{{ data.name }}"></select>
+                <select id="<?php echo esc_attr( $control_uid ); ?>" {{ multiple }} class="ts-select2" data-setting="{{ data.name }}"></select>
             </div>
         </div>
         <#

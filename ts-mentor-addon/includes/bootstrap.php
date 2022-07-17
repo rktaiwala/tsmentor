@@ -6,11 +6,13 @@ use TS\Classes\Dashboard;
 use TS\Traits\Core;
 use TS\Traits\Generator;
 use TS\Traits\Enqueue;
+use TS\Traits\Ajax;
 class Plugin
 {
     use Core;
     use Generator;
     use Enqueue;
+    use Ajax;
     
     // request unique id container
     protected $uid = null;
@@ -58,7 +60,7 @@ class Plugin
         //add_action('elementor/editor/after_save', array($this, 'save_global_values'), 10, 2);
         //add_action('trashed_post', array($this, 'save_global_values_trashed_post'), 10, 1);
         
-
+        $this->init_ajax_hooks();
         // Enqueue
         //add_action('eael/before_enqueue_styles', [$this, 'before_enqueue_styles']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);

@@ -20,7 +20,7 @@ class ComposerStaticInit73dba83455376f3e87cfb01282cb6ebd
         'TS\\Modules\\Woocommerce\\Widgets\\TsWooRpByCat' => __DIR__ . '/../..' . '/includes/modules/woocommerce/widgets/rp.php',
         'TS\\Modules\\Woocommerce\\Widgets\\TsWooTitle' => __DIR__ . '/../..' . '/includes/modules/woocommerce/widgets/ts-woo-title.php',
         'TS\\Plugin' => __DIR__ . '/../..' . '/includes/bootstrap.php',
-        'TS\\Traits\\Ajax_Handler' => __DIR__ . '/../..' . '/includes/traits/ajax.php',
+        'TS\\Traits\\Ajax' => __DIR__ . '/../..' . '/includes/traits/ajax.php',
         'TS\\Traits\\Core' => __DIR__ . '/../..' . '/includes/traits/core.php',
         'TS\\Traits\\Enqueue' => __DIR__ . '/../..' . '/includes/traits/enqueue.php',
         'TS\\Traits\\Generator' => __DIR__ . '/../..' . '/includes/traits/generator.php',

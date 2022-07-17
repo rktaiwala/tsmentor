@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-trait Ajax_Handler {
+trait Ajax {
 	/**
 	 * init_ajax_hooks
 	 */
