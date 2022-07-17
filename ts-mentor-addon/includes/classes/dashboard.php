@@ -68,7 +68,7 @@ class Dashboard {
         if ( ! ts_has_pro() ) {
             $links = array_merge( $links, [
                 sprintf( '<a target="_blank" style="color:#e2498a; font-weight: bold;" href="%s">%s</a>',
-                    'https://techsarathy.com/go/get-pro',
+                    'https://techsarathy.com/wp/plugins/mentor/get-pro',
                     esc_html__( 'Get Pro', 'tsmentor' )
                 )
             ] );

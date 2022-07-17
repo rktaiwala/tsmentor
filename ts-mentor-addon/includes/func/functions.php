@@ -7,7 +7,7 @@ function ts_get_dashboard_link($suffix = '#home') {
 }
 
 function ts_has_pro(){
-    return false;
+    return defined('TS_MENTOR_PRO_VERSION');
 }
 
 function ts_get_b64_icon() {
