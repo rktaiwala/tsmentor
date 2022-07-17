@@ -47,7 +47,7 @@ trait Enqueue
             
         
         // edit mode
-        if ($this->is_edit_mode()) {
+        /*if ($this->is_edit_mode()) {
             $widgets = $this->module_manager->get_modules();
 
             // if no widget in page, return
@@ -106,7 +106,7 @@ trait Enqueue
             
 
             
-        }
+        }*/
             
     }
     
