@@ -86,7 +86,7 @@ class TsAdvTabs extends Widget_Base {
                     foreach($enqueue as $script){
                         wp_enqueue_script(
                             $this->uid.$script['name'],
-                            $this->safe_url(TS_PRO_ASSET_URL . '/js/' . $script['file']. '.js'),
+                            (TS_PRO_ASSET_URL . '/js/' . $script['file']. '.js'),
                             false,
                         );
                         $scripts[]=$script['name'];
