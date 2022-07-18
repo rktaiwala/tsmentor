@@ -40,7 +40,7 @@ class Dashboard {
 
         
     }
-    public function static enqueue_scripts(){
+    public static function  enqueue_scripts(){
         wp_enqueue_style(
             'tsmentor-css',
             (TS_MENTOR_ASSET_URL . '/admin/css/tsmentor.css'),

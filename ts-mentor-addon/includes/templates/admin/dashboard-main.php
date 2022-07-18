@@ -6,6 +6,7 @@
 defined( 'ABSPATH' ) || die();
 ?>
 <div class="ts">
+<div class="container">
     <h1 class="screen-reader-text"><?php esc_html_e( 'Techsarathy Elementor Addons', 'happy-elementor-addons' ); ?></h1>
     <form class="ts-dashboard" id="ha-dashboard-form">
         <div class="ha-dashboard-tabs" role="tablist">
@@ -68,4 +69,5 @@ defined( 'ABSPATH' ) || die();
             </div>
         </div>
     </form>
+</div>
 </div>
