@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
     
     <form class="ts-dashboard" id="ts-dashboard-form">
         <div class="ts-dashboard-tabs" role="tablist">
-            <div class="tabs">
+            <div class="tabs is-boxed m-0">
                 <ul>
                 <?php
                 $tab_count = 1;
@@ -46,7 +46,7 @@ defined( 'ABSPATH' ) || die();
                 <li><button disabled class="ha-dashboard-tabs__nav-btn ha-dashboard-btn ha-dashboard-btn--lg ha-dashboard-btn--save" type="submit"><?php esc_html_e( 'Save Settings', 'happy-elementor-addons' ); ?></button></li>
                 </ul>
             </div>
-            <div class="ha-dashboard-tabs__content">
+            <div class="ha-dashboard-tabs__content box">
                 <?php
                 $tab_count = 1;
                 foreach ( self::get_tabs() as $slug => $data ) :
