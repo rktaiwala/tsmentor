@@ -20,6 +20,7 @@ function get_module_widget_data( $widget_file, $markup = true, $translate = true
         'Type'        => 'Type',
         'Enabled'     => 'Enabled',
         'Dir'         => 'Dir',
+        'Icon'         => 'Icon',
         
     );
     $widget_data = get_file_data( $widget_file, $default_headers, 'ts_widget' );

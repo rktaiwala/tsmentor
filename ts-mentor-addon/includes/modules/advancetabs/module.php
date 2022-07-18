@@ -4,6 +4,7 @@ Module Name: Advance Tabs
 Type: widget
 Enabled: true
 Dir: advancetabs
+Icon: ts-tab
 */
 namespace TS\Modules\Advancetabs;
 

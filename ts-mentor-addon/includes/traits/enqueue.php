@@ -122,7 +122,12 @@ trait Enqueue
 	        TS_MENTOR_VERSION
         );
 
-        
+        wp_enqueue_script(
+            $this->uid.'gen',
+            $this->safe_url(TS_MENTOR_ASSET_URL . '/js/general.min.js'),
+            false,
+            time()
+        );
     }
 
     // inline enqueue styles

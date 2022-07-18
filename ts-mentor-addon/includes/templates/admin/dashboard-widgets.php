@@ -22,19 +22,20 @@ $total_widgets_count = count( $widgets );
         </div>
     </div>
 
-    <div class="ha-dashboard-widgets">
+    <div class="ha-dashboard-widgets list">
         <?php
 
 
 				if( $widgets ):
 					foreach ( $widgets as $widget_key => $widget_data ) :
                         var_dump($widget_data);
-						$title = isset( $widget_data['title'] ) ? $widget_data['title'] : '';
+                        $widget_data=$widget_data['modules'][$widget_key];
+						$title = isset( $widget_data['label'] ) ? $widget_data['label'] : '';
 						$icon = isset( $widget_data['icon'] ) ? $widget_data['icon'] : '';
 						$is_pro = isset( $widget_data['is_pro'] ) && $widget_data['is_pro'] ? true : false;
-						$demo_url = isset( $widget_data['demo'] ) && $widget_data['demo'] ? $widget_data['demo'] : '';
-						$is_placeholder = $is_pro && ! ha_has_pro();
-						$class_attr = 'ha-dashboard-widgets__item';
+						//$demo_url = isset( $widget_data['demo'] ) && $widget_data['demo'] ? $widget_data['demo'] : '';
+						$is_placeholder = $is_pro && ! ts_has_pro();
+						//$class_attr = 'ha-dashboard-widgets__item';
 
 						if ( $is_pro ) {
 							$class_attr .= ' item--is-pro';
@@ -51,23 +52,23 @@ $total_widgets_count = count( $widgets );
 							$checked = 'disabled="disabled"';
 						}
 						?>
-						<div class="<?php echo $class_attr; ?>">
-							<?php if ( $is_pro ) : ?>
-								<span class="ha-dashboard-widgets__item-badge"><?php esc_html_e( 'Pro', 'happy-elementor-addons' ); ?></span>
-							<?php endif; ?>
-							<span class="ha-dashboard-widgets__item-icon"><i class="<?php echo $icon; ?>"></i></span>
-							<h3 class="ha-dashboard-widgets__item-title">
-								<label for="ha-widget-<?php echo $widget_key; ?>" <?php echo $is_placeholder ? 'data-tooltip="Get pro"' : ''; ?>><?php echo $title; ?></label>
-								<?php if ( $demo_url ) : ?>
-									<a href="<?php echo esc_url( $demo_url ); ?>" target="_blank" rel="noopener" data-tooltip="<?php esc_attr_e( 'Click to view demo', 'happy-elementor-addons' ); ?>" class="ha-dashboard-widgets__item-preview"><i aria-hidden="true" class="eicon-device-desktop"></i></a>
-								<?php endif; ?>
-							</h3>
-							<div class="ha-dashboard-widgets__item-toggle ha-toggle">
-								<input id="ha-widget-<?php echo $widget_key; ?>" <?php echo $checked; ?> type="checkbox" class="ha-toggle__check ha-widget" name="widgets[]" value="<?php echo $widget_key; ?>">
-								<b class="ha-toggle__switch"></b>
-								<b class="ha-toggle__track"></b>
-							</div>
-						</div>
+                        
+                          <div class="list-item">
+                            <div class="list-item-image">
+                              <i class="<?php echo $icon?>" aria-hidden="true"></i>
+                            </div>
+
+                            <div class="list-item-content">
+                              <div class="list-item-title"><?php echo $title?></div>
+                            </div>
+
+                            <div class="list-item-controls">
+                                <div class="field">
+                                  <input id="ts-widget-<?php echo $widget_key; ?>" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" <?php echo $checked; ?>>
+                                </div>
+                            </div>
+                          </div>
+                        
 					<?php
 					endforeach;
 				endif;

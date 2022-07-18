@@ -88,9 +88,10 @@ class Plugin
 			return;
 		}
         $this->get_ts_contants();
+        $this->register_hooks();
         $this->module_manager = new ModuleManager();
         Dashboard::init();
-        $this->register_hooks();
+        
     }
     
     public function ts_pro_fail_load() {
