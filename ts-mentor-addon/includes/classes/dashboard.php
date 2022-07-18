@@ -47,6 +47,7 @@ class Dashboard {
             false,
             time()
         );
+        var_dump($_GET['page']);
     }
     public static function is_page() {
         return ( isset( $_GET['page'] ) && ( $_GET['page'] === self::PAGE_SLUG || $_GET['page'] === self::LICENSE_PAGE_SLUG ) );
