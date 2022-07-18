@@ -45,15 +45,7 @@ trait Enqueue
             time()
         );
             
-        if(is_admin()){
-            wp_enqueue_style(
-                $this->uid.'main',
-                $this->safe_url(TS_MENTOR_ASSET_URL . '/admin/css/tsmentor.css'),
-                false,
-                time()
-            );
-
-        }
+        
         // edit mode
         /*if ($this->is_edit_mode()) {
             $widgets = $this->module_manager->get_modules();

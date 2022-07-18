@@ -25,7 +25,7 @@ class Dashboard {
     public static function init() {
         add_action( 'admin_menu', [ __CLASS__, 'add_menu' ], 21 );
         add_action( 'admin_menu', [ __CLASS__, 'update_menu_items' ], 99 );
-        //add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
+        add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
         add_action( 'wp_ajax_' . self::WIDGETS_NONCE, [ __CLASS__, 'save_data' ] );
 
         //add_action( 'admin_init', [ __CLASS__, 'activation_redirect' ] );
@@ -40,7 +40,14 @@ class Dashboard {
 
         
     }
-
+    public function static enqueue_scripts(){
+        wp_enqueue_style(
+            'tsmentor-css',
+            (TS_MENTOR_ASSET_URL . '/admin/css/tsmentor.css'),
+            false,
+            time()
+        );
+    }
     public static function is_page() {
         return ( isset( $_GET['page'] ) && ( $_GET['page'] === self::PAGE_SLUG || $_GET['page'] === self::LICENSE_PAGE_SLUG ) );
     }

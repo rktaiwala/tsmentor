@@ -5,9 +5,9 @@
 
 defined( 'ABSPATH' ) || die();
 ?>
-<div class="wrap">
+<div class="ts">
     <h1 class="screen-reader-text"><?php esc_html_e( 'Techsarathy Elementor Addons', 'happy-elementor-addons' ); ?></h1>
-    <form class="ha-dashboard" id="ha-dashboard-form">
+    <form class="ts-dashboard" id="ha-dashboard-form">
         <div class="ha-dashboard-tabs" role="tablist">
             <div class="ha-dashboard-tabs__nav">
                 <?php
