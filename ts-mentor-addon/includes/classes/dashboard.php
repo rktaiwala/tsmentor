@@ -47,7 +47,14 @@ class Dashboard {
             false,
             time()
         );
-        var_dump($_GET['page']);
+        if($_GET['page']===self::PAGE_SLUG){
+            wp_enqueue_style(
+                'ts-icon',
+                (TS_MENTOR_URL . 'assets/admin/css/tsicon.css'),
+                false,
+                TS_MENTOR_VERSION
+            );
+        }
     }
     public static function is_page() {
         return ( isset( $_GET['page'] ) && ( $_GET['page'] === self::PAGE_SLUG || $_GET['page'] === self::LICENSE_PAGE_SLUG ) );
