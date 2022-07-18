@@ -2,7 +2,7 @@
 
 namespace TS\Classes;
 
-
+use TS\Classes\ModuleManager;
 class Dashboard {
 
     const PAGE_SLUG = 'ts-addons';
@@ -89,6 +89,9 @@ class Dashboard {
     public static function render_home() {
         self::load_template( 'home' );
     }
+    public static function render_widgets() {
+        self::load_template( 'widgets' );
+    }
     private static function load_template( $template ) {
         $file = TS_MENTOR_PATH_INCLUDES . 'templates/admin/dashboard-' . $template . '.php';
         if ( is_readable( $file ) ) {
@@ -105,10 +108,13 @@ class Dashboard {
     public static function get_tabs() {
         $tabs = [
             'home' => [
-                'title' => esc_html__( 'Home', 'ts-elementor-addons' ),
+                'title' => esc_html__( 'Home', 'tsmentor' ),
                 'renderer' => [ __CLASS__, 'render_home' ],
             ],
-            
+            'widgets' => [
+                'title' => esc_html__( 'Widgets', 'tsmentor' ),
+                'renderer' => [ __CLASS__, 'render_widgets' ],
+            ],
         ];
 
         return apply_filters( 'tsmentor_dashboard_get_tabs', $tabs );
@@ -155,7 +161,10 @@ class Dashboard {
         array_shift( $menu );
         $submenu[ self::PAGE_SLUG ] = $menu;
     }
-
+    
+    public static function get_widgets(){
+        return ModuleManager::get_modules();
+    }
     /**
 	 * Set up a div for the app to render into.
 	 */

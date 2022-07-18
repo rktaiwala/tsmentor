@@ -9,7 +9,7 @@ class ModuleManager {
 
 
 	const TAB_TS_MENTOR = 'tab_ts_mentor';
-
+    const WIDGETS_DB_KEY = 'tsmentor_inactive_widgets';
 	private $modules = [];
 
 	public function __construct() {
@@ -32,6 +32,14 @@ class ModuleManager {
 		    }
 	    }
 		
+	}
+
+    public static function get_inactive_widgets() {
+		 return get_option( self::WIDGETS_DB_KEY, [] );
+	}
+
+	public static function save_inactive_widgets( $widgets = [] ) {
+		update_option( self::WIDGETS_DB_KEY, $widgets );
 	}
     /**
 	 * Register custom controls
@@ -124,7 +132,7 @@ class ModuleManager {
 		$this->modules = apply_filters( 'wts_ts_active_modules', $this->modules );
 	}
 
-	public function get_modules() {
+	public static function get_modules() {
 		return $this->modules;
 	}
 
