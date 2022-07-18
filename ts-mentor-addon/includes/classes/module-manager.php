@@ -105,6 +105,7 @@ class ModuleManager {
                         'label'         => __( $wid_data['Name'], 'tsmentor' ),
                         'type'          => $wid_data['Type'],
                         'enabled'       => $wid_data['Enabled'],
+                        'icon'       => $wid_data['Icon'],
 
                     ],
 
