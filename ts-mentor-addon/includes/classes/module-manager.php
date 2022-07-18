@@ -10,7 +10,7 @@ class ModuleManager {
 
 	const TAB_TS_MENTOR = 'tab_ts_mentor';
     const WIDGETS_DB_KEY = 'tsmentor_inactive_widgets';
-	private $modules = [];
+	private static $modules = [];
 
 	public function __construct() {
 
@@ -69,7 +69,7 @@ class ModuleManager {
     
 	public function init_modules() {
 		// Test Work
-		$this->modules = [];
+		self::$modules = [];
         $scaned_widgets=scan_widgets();
         
 	   /*$this->modules['woocommerce'] = [
@@ -98,7 +98,7 @@ class ModuleManager {
 			],
 		];*/
         foreach($scaned_widgets as $wid_key=>$wid_data){
-            $this->modules[$wid_key] = [
+            self::$modules[$wid_key] = [
                 'label'   => __( $wid_data['Name'], 'tsmentor' ),
                 'modules' => [
                     $wid_data['Dir'] => [
@@ -116,28 +116,28 @@ class ModuleManager {
 		$saved_modules = get_option( 'tsmentor_modules' );
 
 		if ( $saved_modules !== false ) {
-			foreach ( $this->modules as $group => $modules ) {
+			foreach ( self::$modules as $group => $modules ) {
 
 				foreach ( $modules['modules'] as $modulekey => $moduleName ) {
 
 					if ( isset( $saved_modules[ $modulekey ] ) ) {
-						$this->modules[ $group ]['modules'][ $modulekey ]['enabled'] = $saved_modules[ $modulekey ];
+						self::$modules[ $group ]['modules'][ $modulekey ]['enabled'] = $saved_modules[ $modulekey ];
 					} else {
-						$this->modules[ $group ]['modules'][ $modulekey ]['enabled'] = true;
+						self::$modules[ $group ]['modules'][ $modulekey ]['enabled'] = true;
 					}
 				}
 			}
 		}
 
-		$this->modules = apply_filters( 'wts_ts_active_modules', $this->modules );
+		self::$modules = apply_filters( 'wts_ts_active_modules', self::$modules );
 	}
 
 	public static function get_modules() {
-		return $this->modules;
+		return self::$modules;
 	}
 
 	public function elementor_widget_registered() {
-		$modules = $this->modules;
+		$modules = self::$modules;
 		
 
 		foreach ( $modules as $group ) {
