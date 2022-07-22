@@ -16,6 +16,8 @@ class ComposerStaticInit73dba83455376f3e87cfb01282cb6ebd
         'TS\\Helper' => __DIR__ . '/../..' . '/includes/helper.php',
         'TS\\Modules\\Advancetabs\\Module' => __DIR__ . '/../..' . '/includes/modules/advancetabs/module.php',
         'TS\\Modules\\Advancetabs\\Widgets\\TsAdvTabs' => __DIR__ . '/../..' . '/includes/modules/advancetabs/widgets/ts-adv-tabs.php',
+        'TS\\Modules\\Cpt\\Module' => __DIR__ . '/../..' . '/includes/modules/cpt/module.php',
+        'TS\\Modules\\Cpt\\Widgets\\TsCpt' => __DIR__ . '/../..' . '/includes/modules/cpt/widgets/customposttype.php',
         'TS\\Modules\\Woocommerce\\Module' => __DIR__ . '/../..' . '/includes/modules/woocommerce/module.php',
         'TS\\Modules\\Woocommerce\\Widgets\\TsWooRpByCat' => __DIR__ . '/../..' . '/includes/modules/woocommerce/widgets/rp.php',
         'TS\\Modules\\Woocommerce\\Widgets\\TsWooTitle' => __DIR__ . '/../..' . '/includes/modules/woocommerce/widgets/ts-woo-title.php',

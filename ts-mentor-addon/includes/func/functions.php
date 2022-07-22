@@ -96,3 +96,35 @@ function scan_widgets($widget_folder=''){
     return $ts_widgets;
 
 }
+
+function ts_get_post_types($args = [], $diff_key = []) {
+	$default = [
+		'public'            => true,
+		'show_in_nav_menus' => true,
+	];
+    $default_exclude=[ 'elementor_library', 'attachment' ];
+    
+	$args       = array_merge($default, $args);
+	$default_exclude = array_merge($default_exclude, $diff_key);
+    
+	$post_types = get_post_types($args, 'objects');
+	$post_types = wp_list_pluck($post_types, 'label', 'name');
+
+	if (!empty($default_exclude)) {
+		$post_types = array_diff_key($post_types, $default_exclude);
+	}
+	return $post_types;
+}
+
+function ts_escape_tags($tag, $default = 'span', $extra = []) {
+
+	$supports = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p'];
+
+	$supports = array_merge($supports, $extra);
+
+	if (!in_array($tag, $supports, true)) {
+		return $default;
+	}
+
+	return $tag;
+}

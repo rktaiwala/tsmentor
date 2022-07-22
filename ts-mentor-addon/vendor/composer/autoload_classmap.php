@@ -15,6 +15,8 @@ return array(
     'TS\\Helper' => $baseDir . '/includes/helper.php',
     'TS\\Modules\\Advancetabs\\Module' => $baseDir . '/includes/modules/advancetabs/module.php',
     'TS\\Modules\\Advancetabs\\Widgets\\TsAdvTabs' => $baseDir . '/includes/modules/advancetabs/widgets/ts-adv-tabs.php',
+    'TS\\Modules\\Cpt\\Module' => $baseDir . '/includes/modules/cpt/module.php',
+    'TS\\Modules\\Cpt\\Widgets\\TsCpt' => $baseDir . '/includes/modules/cpt/widgets/customposttype.php',
     'TS\\Modules\\Woocommerce\\Module' => $baseDir . '/includes/modules/woocommerce/module.php',
     'TS\\Modules\\Woocommerce\\Widgets\\TsWooRpByCat' => $baseDir . '/includes/modules/woocommerce/widgets/rp.php',
     'TS\\Modules\\Woocommerce\\Widgets\\TsWooTitle' => $baseDir . '/includes/modules/woocommerce/widgets/ts-woo-title.php',
