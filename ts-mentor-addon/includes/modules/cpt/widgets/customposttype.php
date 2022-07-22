@@ -79,7 +79,7 @@ class TsCpt extends Widget_Base {
 		$post_types = ts_get_post_types();
 		return $post_types;
 	}
-    protected function register_controls() {
+    protected function register_content_controls() {
 
 		// Content Tab Start
 
@@ -322,6 +322,7 @@ class TsCpt extends Widget_Base {
 
 		$this->end_controls_section();
 	}
+    
     /**
      * Register widget style controls
      */

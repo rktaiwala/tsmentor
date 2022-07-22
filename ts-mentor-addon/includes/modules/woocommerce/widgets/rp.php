@@ -66,7 +66,13 @@ class TsWooRpByCat extends Widget_Base {
 			]
 		);
 	}
-    protected function register_controls() {
+    protected function register_content_controls(){
+        $this->__ts_register_controls();
+    }
+    protected function register_style_controls(){
+        
+    }
+    protected function __ts_register_controls() {
 
 		// Content Tab Start
 

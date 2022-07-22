@@ -99,7 +99,7 @@ class TsAdvTabs extends Widget_Base {
 
 	}
 	//phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
-	public function register_controls() {
+	protected function __ts_register_controls() {
 		/**
          * Advance Tabs Settings
          */
@@ -357,6 +357,10 @@ class TsAdvTabs extends Widget_Base {
         );
         $this->end_controls_section();
         
+        
+	}
+    
+    protected function __ts_style_controls(){
         /**
          * -------------------------------------------
          * Tab Style Advance Tabs Generel Style
@@ -931,8 +935,14 @@ class TsAdvTabs extends Widget_Base {
         );
 
         $this->end_controls_section();
+    }
+    protected function register_content_controls () {
+		$this->__ts_register_controls();
 	}
-
+    
+    protected function register_style_controls () {
+		$this->__ts_style_controls();
+	}
 	public function render() {
 
 		$settings = $this->get_settings_for_display();

@@ -26,4 +26,31 @@ abstract class Widget_Base extends \Elementor\Widget_Base {
     public function get_style_depends() {
         return [];
     }
+    /**
+     * Register widget controls
+     */
+    protected function register_controls() {
+        do_action( 'tsmentor_start_register_controls', $this );
+
+        $this->register_content_controls();
+
+        $this->register_style_controls();
+
+        do_action( 'tsmentor_end_register_controls', $this );
+	}
+
+    /**
+     * Register content controls
+     *
+     * @return void
+     */
+    abstract protected function register_content_controls();
+
+    /**
+     * Register style controls
+     *
+     * @return void
+     */
+    abstract protected function register_style_controls();
+
 }

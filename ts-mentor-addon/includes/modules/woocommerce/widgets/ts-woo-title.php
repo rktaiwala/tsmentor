@@ -57,7 +57,7 @@ class TsWooTitle extends Widget_Base {
 	}
 
 	//phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
-	public function register_controls() {
+	protected function __ts_register_controls() {
 		$this->start_controls_section(
 			'section_title',
 			[
@@ -127,7 +127,13 @@ class TsWooTitle extends Widget_Base {
 		);
 		$this->end_controls_section();
 
-		$this->start_controls_section(
+		
+	}
+    protected function register_content_controls(){
+        $this->__ts_register_controls();
+    }
+    protected function register_style_controls(){
+        $this->start_controls_section(
 			'section_title_style',
 			[
 				'label' => __( 'General', 'ae-pro' ),
@@ -158,8 +164,7 @@ class TsWooTitle extends Widget_Base {
 			]
 		);
 		$this->end_controls_section();
-	}
-
+    }
 	public function render() {
 
 		if ( $this->is_debug_on() ) {
