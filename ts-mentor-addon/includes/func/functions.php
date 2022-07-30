@@ -55,10 +55,23 @@ function scan_widgets($widget_folder=''){
                         if ( '.' === substr( $subfile, 0, 1 ) ) {
                             continue;
                         }
-
-                        if ( '.php' === substr( $subfile, -4 ) ) {
-                            $widget_files[] = "$file/$subfile";
+                        
+                        if ( is_dir( $widgets_root.'/'.$file . '/' . $subfile ) ) {
+                            $widgets_sub_subdir = @opendir( $widgets_root . '/' . $file.'/'.$subfile );
+                            if($widgets_sub_subdir){
+                                while(( $sub_subfile = readdir( $widgets_sub_subdir ) ) !== false ){
+                                    if ( '.' === substr( $sub_subfile, 0, 1 ) ) {
+                                        continue;
+                                    }
+                                    if ( '.php' === substr( $sub_subfile, -4 ) ) {
+                                        $widget_files[] = "$file/$subfile";
+                                    }
+                                }
+                                closedir( $widgets_sub_subdir );
+                            }
+                            
                         }
+                        
                     }
 
                     closedir( $widgets_subdir );

@@ -37,7 +37,7 @@
                                     if(typeof response.data.results[item] != 'undefined'){
                                         const key = item;
                                         const value = response.data.results[item];
-                                        eaelSelect2Options += `<option selected="selected" value="${key}">${value}</option>`;
+                                        tsSelect2Options += `<option selected="selected" value="${key}">${value}</option>`;
                                     }
                                 })
 

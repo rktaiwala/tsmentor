@@ -47,7 +47,7 @@ class Dashboard {
             false,
             time()
         );
-        if($_GET['page']===self::PAGE_SLUG){
+        if(self::is_page()){
             wp_enqueue_style(
                 'ts-icon',
                 (TS_MENTOR_URL . 'assets/admin/css/tsicon.css'),
@@ -57,7 +57,7 @@ class Dashboard {
         }
     }
     public static function is_page() {
-        return ( isset( $_GET['page'] ) && ( $_GET['page'] === self::PAGE_SLUG || $_GET['page'] === self::LICENSE_PAGE_SLUG ) );
+        return ( isset( $_GET['page'] ) && ( $_GET['page'] === self::PAGE_SLUG ) );
     }
 
     public static function remove_all_notices() {
