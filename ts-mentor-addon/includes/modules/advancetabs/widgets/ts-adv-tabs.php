@@ -1,6 +1,7 @@
 <?php
 /*
 Module Name: Advanced Tabs
+Widget Id: ts-adv-tabs
 Type: widget
 Enabled: true
 Dir: advancetabs

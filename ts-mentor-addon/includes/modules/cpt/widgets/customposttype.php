@@ -1,6 +1,7 @@
 <?php
 /*
 Module Name: Custom Post Type Lists
+Widget Id: ts-cpt
 Type: widget
 Enabled: true
 Dir: cpt

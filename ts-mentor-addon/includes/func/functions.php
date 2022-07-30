@@ -17,6 +17,7 @@ function ts_get_b64_icon() {
 function get_module_widget_data( $widget_file, $markup = true, $translate = true ) {
     $default_headers = array(
         'Name'        => 'Module Name',
+        'WidgetId'        => 'Widget Id',
         'Type'        => 'Type',
         'Enabled'     => 'Enabled',
         'Dir'         => 'Dir',
@@ -94,15 +95,16 @@ function scan_widgets($widget_folder=''){
         if ( ! is_readable( "$widgets_root/$widget_file" ) ) {
             continue;
         }
-
+        
         // Do not apply markup/translate as it will be cached.
         $widget_data = get_module_widget_data( "$widgets_root/$widget_file", false, false );
-        var_dump($widget_data);
+        
         if ( empty( $widget_data['Name'] ) ) {
             continue;
         }
-
-        $ts_widgets[ $widget_data['Dir'] ] = $widget_data;
+        
+        
+        $ts_widgets[ $widget_data['Dir'] ][] = $widget_data;
     }
 
     //uasort( $wp_plugins, '_sort_uname_callback' );

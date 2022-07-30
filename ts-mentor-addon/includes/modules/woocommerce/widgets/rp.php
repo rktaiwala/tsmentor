@@ -1,6 +1,7 @@
 <?php
 /*
 Module Name: Related Products Current Category
+Widget Id: ts-woo-rp-by-cat
 Type: widget
 Enabled: true
 Dir: woocommerce

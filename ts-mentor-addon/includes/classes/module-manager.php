@@ -97,22 +97,24 @@ class ModuleManager {
 				
 			],
 		];*/
-        foreach($scaned_widgets as $wid_key=>$wid_data){
-            self::$modules[$wid_key] = [
-                'label'   => __( $wid_data['Name'], 'tsmentor' ),
-                'modules' => [
-                    $wid_data['Dir'] => [
-                        'label'         => __( $wid_data['Name'], 'tsmentor' ),
-                        'type'          => $wid_data['Type'],
-                        'enabled'       => $wid_data['Enabled'],
-                        'icon'       => $wid_data['Icon'],
+        foreach($scaned_widgets as $wid_key=>$wid_arr){
+            foreach($wid_arr as $wid_data){
+                self::$modules[$wid_key] = [
+                    'label'   => __( $wid_data['Name'], 'tsmentor' ),
+                    'modules' => [
+                        $wid_data['Dir'] => [
+                            'label'         => __( $wid_data['Name'], 'tsmentor' ),
+                            'widget_id'         =>$wid_data['WidgetId'],
+                            'type'          => $wid_data['Type'],
+                            'enabled'       => $wid_data['Enabled'],
+                            'icon'       => $wid_data['Icon'],
+
+                        ],
+
 
                     ],
-
-
-                ],
-            ];
-            
+                ];
+            }
         }
 		$saved_modules = get_option( 'tsmentor_modules' );
 
