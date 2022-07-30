@@ -6,6 +6,7 @@
 defined( 'ABSPATH' ) || die();
 
 $widgets = self::get_widgets();
+//var_dump($widgets);
 //$catwise_widgets = self::get_widget_map_catwise();
 $inactive_widgets = \TS\Classes\ModuleManager::get_inactive_widgets();
 
@@ -28,32 +29,32 @@ $total_widgets_count = count( $widgets );
 
 				if( $widgets ):
 					foreach ( $widgets as $widget_key => $widget_data ) :
-                        var_dump($widget_data);
-                        $widget_data=$widget_data['modules'][$widget_key];
-						$title = isset( $widget_data['label'] ) ? $widget_data['label'] : '';
-						$icon = isset( $widget_data['icon'] ) ? $widget_data['icon'] : '';
-						$is_pro = isset( $widget_data['is_pro'] ) && $widget_data['is_pro'] ? true : false;
-						//$demo_url = isset( $widget_data['demo'] ) && $widget_data['demo'] ? $widget_data['demo'] : '';
-						$is_placeholder = $is_pro && ! ts_has_pro();
-						//$class_attr = 'ha-dashboard-widgets__item';
+                        //var_dump($widget_data);
+                        foreach($widget_data as $wid){
+                            
+                            $title = isset( $wid['label'] ) ? $wid['label'] : '';
+                            $icon = isset( $wid['icon'] ) ? $wid['icon'] : '';
+                            $is_pro = isset( $wid['is_pro'] ) && $wid['is_pro'] ? true : false;
+                            //$demo_url = isset( $widget_data['demo'] ) && $widget_data['demo'] ? $widget_data['demo'] : '';
+                            $is_placeholder = $is_pro && ! ts_has_pro();
+                            //$class_attr = 'ha-dashboard-widgets__item';
 
-						if ( $is_pro ) {
-							$class_attr .= ' item--is-pro';
-						}
+                            if ( $is_pro ) {
+                                $class_attr .= ' item--is-pro';
+                            }
 
-						$checked = '';
+                            $checked = '';
 
-						if ( ! in_array( $widget_key, $inactive_widgets ) ) {
-							$checked = 'checked="checked"';
-						}
+                            if ( ! in_array( $wid['widget_id'], $inactive_widgets ) ) {
+                                $checked = 'checked="checked"';
+                            }
 
-						if ( $is_placeholder ) {
-							$class_attr .= ' item--is-placeholder';
-							$checked = 'disabled="disabled"';
-						}
-						?>
-                        
-                          <div class="list-item">
+                            if ( $is_placeholder ) {
+                                $class_attr .= ' item--is-placeholder';
+                                $checked = 'disabled="disabled"';
+                            }
+						  ?>
+                            <div class="list-item">
                             <div class="list-item-image">
                               <i class="<?php echo $icon?>" aria-hidden="true"></i>
                             </div>
@@ -64,12 +65,13 @@ $total_widgets_count = count( $widgets );
 
                             <div class="list-item-controls">
                                 <div class="field">
-                                  <input id="ts-widget-<?php echo $widget_key; ?>" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" <?php echo $checked; ?>>
+                                  <input id="ts-widget-<?php echo $wid['widget_id']; ?>" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" <?php echo $checked; ?>>
                                 </div>
                             </div>
                           </div>
                         
-					<?php
+					   <?php
+                        }
 					endforeach;
 				endif;
 

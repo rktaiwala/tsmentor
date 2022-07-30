@@ -97,36 +97,32 @@ class ModuleManager {
 				
 			],
 		];*/
+        //var_dump($scaned_widgets);
         foreach($scaned_widgets as $wid_key=>$wid_arr){
+            $temp=[];
             foreach($wid_arr as $wid_data){
-                self::$modules[$wid_key] = [
-                    'label'   => __( $wid_data['Name'], 'tsmentor' ),
-                    'modules' => [
-                        $wid_data['Dir'] => [
-                            'label'         => __( $wid_data['Name'], 'tsmentor' ),
-                            'widget_id'         =>$wid_data['WidgetId'],
-                            'type'          => $wid_data['Type'],
-                            'enabled'       => $wid_data['Enabled'],
-                            'icon'       => $wid_data['Icon'],
-
-                        ],
-
-
-                    ],
-                ];
+                $temp[] = ['label'   => __( $wid_data['Name'], 'tsmentor' ),
+                        'widget_id'         =>$wid_data['WidgetId'],
+                        'type'          => $wid_data['Type'],
+                        'enabled'       => $wid_data['Enabled'],
+                        'icon'       => $wid_data['Icon'],
+                        'classname'       => $wid_data['className'],
+                        ];
             }
+            self::$modules[$wid_key]=$temp;
         }
+        
 		$saved_modules = get_option( 'tsmentor_modules' );
 
 		if ( $saved_modules !== false ) {
 			foreach ( self::$modules as $group => $modules ) {
 
-				foreach ( $modules['modules'] as $modulekey => $moduleName ) {
+				foreach ( $modules as $k=>$module ) {
 
-					if ( isset( $saved_modules[ $modulekey ] ) ) {
-						self::$modules[ $group ]['modules'][ $modulekey ]['enabled'] = $saved_modules[ $modulekey ];
+					if ( isset( $saved_modules[ $module['widget_id'] ] ) ) {
+						self::$modules[ $group ][$k]['enabled'] = $saved_modules[ $module['widget_id'] ];
 					} else {
-						self::$modules[ $group ]['modules'][ $modulekey ]['enabled'] = true;
+						self::$modules[ $group ][$k]['enabled'] = true;
 					}
 				}
 			}
@@ -143,14 +139,14 @@ class ModuleManager {
 		$modules = self::$modules;
 		
 
-		foreach ( $modules as $group ) {
+		foreach ( $modules as $moduleKey=>$group ) {
 
-			if ( is_array( $group['modules'] ) && count( $group['modules'] ) ) {
+			if ( is_array( $group ) && count( $group ) ) {
 
-				foreach ( $group['modules'] as $key => $value ) {
+				foreach ( $group as $key => $value ) {
 
 					if ( $value['enabled'] ) {
-						$class_name = str_replace( '-', ' ', $key );
+						$class_name = str_replace( '-', ' ', $moduleKey );
 						$class_name = str_replace( ' ', '', ucwords( $class_name ) );
 						$class_name = 'TS\Modules\\' . $class_name . '\Module';
 						$class_name::instance();

@@ -22,6 +22,7 @@ function get_module_widget_data( $widget_file, $markup = true, $translate = true
         'Enabled'     => 'Enabled',
         'Dir'         => 'Dir',
         'Icon'         => 'Icon',
+        'ClassName'    => 'Class Name',
         
     );
     $widget_data = get_file_data( $widget_file, $default_headers, 'ts_widget' );
