@@ -1,6 +1,6 @@
 <?php
 /*
-Widget Name: Custom Post Type Lists
+Module Name: Custom Post Type Lists
 Type: widget
 Enabled: true
 Dir: cpt

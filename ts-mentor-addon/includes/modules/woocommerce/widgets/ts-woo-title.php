@@ -1,6 +1,6 @@
 <?php
 /*
-Widget Name: Woocommerce Title
+Module Name: Woocommerce Title
 Type: widget
 Enabled: true
 Dir: woocommerce

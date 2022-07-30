@@ -59,12 +59,15 @@ function scan_widgets($widget_folder=''){
                         if ( is_dir( $widgets_root.'/'.$file . '/' . $subfile ) ) {
                             $widgets_sub_subdir = @opendir( $widgets_root . '/' . $file.'/'.$subfile );
                             if($widgets_sub_subdir){
+                                
                                 while(( $sub_subfile = readdir( $widgets_sub_subdir ) ) !== false ){
-                                    if ( '.' === substr( $sub_subfile, 0, 1 ) ) {
-                                        continue;
-                                    }
+                                    //var_dump($sub_subfile);
+                                    //if ( '.' === substr( $sub_subfile, 0, 1 ) ) {
+                                        //continue;
+                                    //}
                                     if ( '.php' === substr( $sub_subfile, -4 ) ) {
-                                        $widget_files[] = "$file/$subfile";
+                                        //var_dump($sub_subfile);
+                                        $widget_files[] = "$file/$subfile/$sub_subfile";
                                     }
                                 }
                                 closedir( $widgets_sub_subdir );
@@ -87,13 +90,14 @@ function scan_widgets($widget_folder=''){
     }
 
     foreach ( $widget_files as $widget_file ) {
+        //var_dump($widget_file);
         if ( ! is_readable( "$widgets_root/$widget_file" ) ) {
             continue;
         }
 
         // Do not apply markup/translate as it will be cached.
         $widget_data = get_module_widget_data( "$widgets_root/$widget_file", false, false );
-
+        var_dump($widget_data);
         if ( empty( $widget_data['Name'] ) ) {
             continue;
         }

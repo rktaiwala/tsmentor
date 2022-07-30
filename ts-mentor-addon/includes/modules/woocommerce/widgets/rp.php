@@ -1,6 +1,6 @@
 <?php
 /*
-Widget Name: Related Products Current Category
+Module Name: Related Products Current Category
 Type: widget
 Enabled: true
 Dir: woocommerce
