@@ -66,6 +66,7 @@ $total_widgets_count = count( $widgets );
                             <div class="list-item-controls">
                                 <div class="field">
                                   <input id="ts-widget-<?php echo $wid['widget_id']; ?>" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" <?php echo $checked; ?>>
+                                    <label for="ts-widget-<?php echo $wid['widget_id']; ?>"></label>
                                 </div>
                             </div>
                           </div>

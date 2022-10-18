@@ -1,0 +1,23 @@
+.ts-error-msg{
+    display: none;
+color: red;
+font-size: 17px;
+animation: shakeX; 
+  animation-duration: 2s;
+}
+.error{
+    
+}
+input.error{
+    border:1px solid red;
+animation: shakeX; 
+  animation-duration: 2s;
+}
+.ts-crypto-title img,.ts-token-title img {
+max-height: 20px;
+margin-right: 10px;
+}
+.ts-crpyto-button-container {
+margin-top: 10px;
+}
+@-webkit-keyframes shakeX{0%,to{-webkit-transform:translateZ(0);transform:translateZ(0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}@keyframes shakeX{0%,to{-webkit-transform:translateZ(0);transform:translateZ(0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}

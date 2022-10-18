@@ -3,6 +3,8 @@
 namespace TS;
 use TS\Classes\ModuleManager;
 use TS\Classes\Dashboard;
+use TS\Classes\TsSettings;
+use TS\Classes\QueryModule;
 use TS\Traits\Core;
 use TS\Traits\Generator;
 use TS\Traits\Enqueue;
@@ -46,7 +48,7 @@ class Plugin
         add_action( 'plugins_loaded', [ $this, 'ts_plugins_loaded' ], 11 );
         
         // register hooks
-        
+        //new TsSettings();
     }
 
     protected function register_hooks()
@@ -59,7 +61,7 @@ class Plugin
         add_filter('tsmentor/is_plugin_active', [$this, 'is_plugin_active'], 10, 1);
         //add_action('elementor/editor/after_save', array($this, 'save_global_values'), 10, 2);
         //add_action('trashed_post', array($this, 'save_global_values_trashed_post'), 10, 1);
-        
+        $this->query_control = new QueryModule();
         $this->init_ajax_hooks();
         // Enqueue
         //add_action('eael/before_enqueue_styles', [$this, 'before_enqueue_styles']);
@@ -72,13 +74,9 @@ class Plugin
         add_action('wp', [$this, 'init_request_data']);
         //add_filter('elementor/frontend/builder_content_data', [$this, 'collect_loaded_templates'], 10, 2);
         //add_action('wp_print_footer_scripts', [$this, 'update_request_data']);
-
-	    
-	    
         
-
-
     }
+    
     public function ts_plugins_loaded(){
         
         if ( ! did_action( 'elementor/loaded' ) ) {

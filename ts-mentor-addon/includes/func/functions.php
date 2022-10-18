@@ -17,12 +17,10 @@ function ts_get_b64_icon() {
 function get_module_widget_data( $widget_file, $markup = true, $translate = true ) {
     $default_headers = array(
         'Name'        => 'Module Name',
-        'WidgetId'        => 'Widget Id',
         'Type'        => 'Type',
         'Enabled'     => 'Enabled',
         'Dir'         => 'Dir',
         'Icon'         => 'Icon',
-        'ClassName'    => 'Class Name',
         
     );
     $widget_data = get_file_data( $widget_file, $default_headers, 'ts_widget' );
@@ -57,26 +55,10 @@ function scan_widgets($widget_folder=''){
                         if ( '.' === substr( $subfile, 0, 1 ) ) {
                             continue;
                         }
-                        
-                        if ( is_dir( $widgets_root.'/'.$file . '/' . $subfile ) ) {
-                            $widgets_sub_subdir = @opendir( $widgets_root . '/' . $file.'/'.$subfile );
-                            if($widgets_sub_subdir){
-                                
-                                while(( $sub_subfile = readdir( $widgets_sub_subdir ) ) !== false ){
-                                    //var_dump($sub_subfile);
-                                    //if ( '.' === substr( $sub_subfile, 0, 1 ) ) {
-                                        //continue;
-                                    //}
-                                    if ( '.php' === substr( $sub_subfile, -4 ) ) {
-                                        //var_dump($sub_subfile);
-                                        $widget_files[] = "$file/$subfile/$sub_subfile";
-                                    }
-                                }
-                                closedir( $widgets_sub_subdir );
-                            }
-                            
+
+                        if ( '.php' === substr( $subfile, -4 ) ) {
+                            $widget_files[] = "$file/$subfile";
                         }
-                        
                     }
 
                     closedir( $widgets_subdir );
@@ -92,20 +74,18 @@ function scan_widgets($widget_folder=''){
     }
 
     foreach ( $widget_files as $widget_file ) {
-        //var_dump($widget_file);
         if ( ! is_readable( "$widgets_root/$widget_file" ) ) {
             continue;
         }
-        
+
         // Do not apply markup/translate as it will be cached.
         $widget_data = get_module_widget_data( "$widgets_root/$widget_file", false, false );
-        
+
         if ( empty( $widget_data['Name'] ) ) {
             continue;
         }
-        
-        
-        $ts_widgets[ $widget_data['Dir'] ][] = $widget_data;
+        if($widget_data['Enabled']=='yes')
+        $ts_widgets[ $widget_data['Dir'] ] = $widget_data;
     }
 
     //uasort( $wp_plugins, '_sort_uname_callback' );
@@ -147,4 +127,181 @@ function ts_escape_tags($tag, $default = 'span', $extra = []) {
 	}
 
 	return $tag;
+}
+function ts_get_terms($taxonomy){
+    $args = [
+        'taxonomy' => $taxonomy,
+        'hide_empty' => false,
+    ];
+
+    $terms = get_terms( $args );
+    $data=[];
+    if ( is_wp_error( $terms ) || empty( $terms ) ) {
+        return $data;
+    }
+    
+    foreach ( $terms as $term ) {
+        $label = $term->name;
+        $data[] = [
+            'id' => $term->term_taxonomy_id,
+            'text' => $label,
+            'count'=>$term->count,
+        ];
+    }
+    return $data;
+}
+
+function get_current_post(){
+    $post_data='post';
+    if(isset($GLOBALS['post'])) $post_data = $GLOBALS['post'];
+    return get_post($post_data);
+    
+}
+function ts_distance_calculate($cr_lat,$cr_lon,$cmp_lat,$cmp_lon){
+    $earth_radius = 6371;
+    $distance= ( $earth_radius * acos( 
+					cos( radians($cr_lat) ) * 
+					cos( radians( $cmp_lat ) ) * 
+					cos( radians( $cmp_lon ) - radians($cr_lon) ) + 
+					sin( radians($cr_lat) ) * 
+					sin( radians( $cmp_lat ) ) 
+				) );
+    return $distance;
+}
+function ts_get_posts_nearby($args,$current_post,$map_field_name){
+    $posts=[];
+    if (isset($args) && count($args)) {
+        $p_query = new \WP_Query($args);
+        
+        $counter = 0;
+        if ($p_query->have_posts()) {
+            global $wp_query;
+            $original_queried_object = get_queried_object();
+            $original_queried_object_id = get_queried_object_id();
+            while ($p_query->have_posts()) {
+                $p_query->the_post();
+                $id_page = get_the_ID();
+                $wp_query->queried_object_id = $id_page;
+                $wp_query->queried_object = get_post();
+                $map_field = TS\Helper::get_acf_field_value($map_field_name, get_the_ID());
+                
+                if (!empty($map_field)) {
+                    $indirizzo = $map_field['address'];
+                    $lat = $map_field['lat'];
+                    $lng = $map_field['lng'];
+                    if (!is_numeric($lat) || !is_numeric($lng)) {
+                        continue;
+                    }
+                    // link to post
+                    $postlink = get_the_permalink($id_page);
+                    
+                    $postTitle = wp_kses_post(get_the_title($id_page));
+                        
+                    $distance=ts_distance_calculate($current_post['lat'],$current_post['lng'],$lat,$lng);
+                    $distance=number_format((float)$distance, 2, '.', '');   
+                    $posts[]= ['title'=>$postTitle,'link'=>$postlink,'distance'=>$distance];
+
+                }
+            }
+            // Reset the post data to prevent conflicts with WP globals
+            $wp_query->queried_object = $original_queried_object;
+            $wp_query->queried_object_id = $original_queried_object_id;
+            wp_reset_postdata();
+        }
+    }
+    usort($posts,'sortByDistance');
+    return $posts;
+}
+function radians($degrees){          
+    return 0.0174532925 * $degrees;
+} 
+function sortByDistance(array $a, array $b){
+    if ($a['distance'] < $b['distance']) {
+        return -1;
+    } else if ($a['distance'] > $b['distance']) {
+        return 1;
+    } else {
+        return 0;
+    }
+
+}
+
+function ts_get_user_most_recent_post($user){
+    global $wpdb;
+    $recent  = $wpdb->get_row( $wpdb->prepare("SELECT ID, post_date FROM {$wpdb->prefix}posts WHERE post_author = %d AND post_type = 'post' AND post_status = 'publish' ORDER BY post_date DESC LIMIT 1", (int)$user ), ARRAY_A);
+    
+    if( ! isset( $recent['ID'] ) )
+        return new WP_Error( 'No post found for selected user' );
+    
+    
+    return get_post( $recent['ID'], 'ARRAY_A' );
+    
+    
+}
+function ts_user_last_post_how_recent($user,$days=7){
+    $today = strtotime( date( 'Y-m-d' ) );
+    
+    $post=ts_get_user_most_recent_post($user);
+    
+    if(is_wp_error($post)) return false;
+    $post_time= strtotime( $post['post_date'] );
+    $expire = strtotime( '-'. $days .'days', $today );
+    // is the expiration date older than today? 
+    // if so, disable the user's access
+    if ( $post_time > $expire )
+    {
+        return true;	
+    }
+    return false;
+}
+
+/**
+ * Checks to see if the specified user id has a uploaded the image via wp_admin.
+ *
+ * @return bool  Whether or not the user has a gravatar
+ */
+function is_uploaded_via_wp_admin( $gravatar_url ) {
+
+   $parsed_url   = wp_parse_url( $gravatar_url );
+
+   $query_args = ! empty( $parsed_url['query'] ) ? $parsed_url['query'] : '';
+
+   // If query args is empty means, user has uploaded gravatar.
+   return empty( $query_args );
+
+}
+
+function has_gravatar( $user ) {
+
+   $gravatar_url = get_avatar_url( $user );
+    // 1. Check if uploaded from WP Dashboard.
+   if ( is_uploaded_via_wp_admin( $gravatar_url ) ) {
+      return true;
+   }
+   // 2. Check if uploaded from gravatar site by adding 404 in the url query param 
+   $gravatar_url = sprintf( '%s&d=404', $gravatar_url );
+
+   // Make a request to $gravatar_url and get the header
+   $headers = @get_headers( $gravatar_url );
+
+   // If request status is 200, which means user has uploaded the avatar on gravatar ste
+   return preg_match( "|200|", $headers[0] );
+}
+function get_color_comb(){
+    $colors=[
+        ['bg'=>'#E2856E','txt'=>'#fff'],
+        ['bg'=>'#0F1A20','txt'=>'#fff'],
+        ['bg'=>'#F42C04','txt'=>'#fff'],
+        ['bg'=>'#ADA296','txt'=>'#000'],
+        ['bg'=>'#60AFFF','txt'=>'#000'],
+        ['bg'=>'#88A2AA','txt'=>'#fff'],
+        ['bg'=>'#586F7C','txt'=>'#fff'],
+        ['bg'=>'#28C2FF','txt'=>'#fff'],
+        ['bg'=>'#3066BE','txt'=>'#fff'],
+        ['bg'=>'#963484','txt'=>'#fff'],
+    ];
+    $array_copy = $colors;
+    shuffle($array_copy);
+    $rdm = array_rand($array_copy, 1);
+    return $colors[$rdm];
 }

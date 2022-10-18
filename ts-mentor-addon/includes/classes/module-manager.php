@@ -49,8 +49,14 @@ class ModuleManager {
 	public function register_controls( $controls_manager ) {
 		if ( version_compare( ELEMENTOR_VERSION, '3.5.0', '>=' ) ) {
 			$controls_manager->register( new \TS\Controls\Select2() );
+			$controls_manager->register( new \TS\Controls\Lazy_Select() );
+			$controls_manager->register( new \TS\Controls\TS_Query() );
+            $controls_manager->register( new \TS\Controls\Pdf_Select() );
 		} else {
-			$controls_manager->register_control( 'eael-select2', new \TS\Controls\Select2() );
+			$controls_manager->register_control( 'ts-select2', new \TS\Controls\Select2() );
+			$controls_manager->register_control( 'ts-lazy-select', new \TS\Controls\Lazy_Select() );
+			$controls_manager->register_control( 'ts_query', new \TS\Controls\TS_Query() );
+            $controls_manager->register_control( 'ts-pdf-select', new \TS\Controls\Pdf_Select() );
 		}
 	}
 
@@ -97,32 +103,34 @@ class ModuleManager {
 				
 			],
 		];*/
-        //var_dump($scaned_widgets);
-        foreach($scaned_widgets as $wid_key=>$wid_arr){
-            $temp=[];
-            foreach($wid_arr as $wid_data){
-                $temp[] = ['label'   => __( $wid_data['Name'], 'tsmentor' ),
-                        'widget_id'         =>$wid_data['WidgetId'],
+        foreach($scaned_widgets as $wid_key=>$wid_data){
+            self::$modules[$wid_key] = [
+                'label'   => __( $wid_data['Name'], 'tsmentor' ),
+                'modules' => [
+                    $wid_data['Dir'] => [
+                        'label'         => __( $wid_data['Name'], 'tsmentor' ),
                         'type'          => $wid_data['Type'],
                         'enabled'       => $wid_data['Enabled'],
                         'icon'       => $wid_data['Icon'],
-                        'classname'       => $wid_data['className'],
-                        ];
-            }
-            self::$modules[$wid_key]=$temp;
+
+                    ],
+
+
+                ],
+            ];
+            
         }
-        
 		$saved_modules = get_option( 'tsmentor_modules' );
 
 		if ( $saved_modules !== false ) {
 			foreach ( self::$modules as $group => $modules ) {
 
-				foreach ( $modules as $k=>$module ) {
+				foreach ( $modules['modules'] as $modulekey => $moduleName ) {
 
-					if ( isset( $saved_modules[ $module['widget_id'] ] ) ) {
-						self::$modules[ $group ][$k]['enabled'] = $saved_modules[ $module['widget_id'] ];
+					if ( isset( $saved_modules[ $modulekey ] ) ) {
+						self::$modules[ $group ]['modules'][ $modulekey ]['enabled'] = $saved_modules[ $modulekey ];
 					} else {
-						self::$modules[ $group ][$k]['enabled'] = true;
+						self::$modules[ $group ]['modules'][ $modulekey ]['enabled'] = true;
 					}
 				}
 			}
@@ -139,14 +147,14 @@ class ModuleManager {
 		$modules = self::$modules;
 		
 
-		foreach ( $modules as $moduleKey=>$group ) {
+		foreach ( $modules as $group ) {
 
-			if ( is_array( $group ) && count( $group ) ) {
+			if ( is_array( $group['modules'] ) && count( $group['modules'] ) ) {
 
-				foreach ( $group as $key => $value ) {
+				foreach ( $group['modules'] as $key => $value ) {
 
 					if ( $value['enabled'] ) {
-						$class_name = str_replace( '-', ' ', $moduleKey );
+						$class_name = str_replace( '-', ' ', $key );
 						$class_name = str_replace( ' ', '', ucwords( $class_name ) );
 						$class_name = 'TS\Modules\\' . $class_name . '\Module';
 						$class_name::instance();

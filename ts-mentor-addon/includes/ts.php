@@ -55,7 +55,29 @@ class Ts {
 		
 
 	}
-	
+	public function get_frontend_file_url( $frontend_file_name, $custom_file ) {
+		if ( $custom_file ) {
+			//$frontend_file = $this->get_frontend_file( $frontend_file_name );
+
+			//$frontend_file_url = $frontend_file->get_url();
+		} else {
+			$frontend_file_url = TS_MENTOR_ASSET_URL . 'css/' . $frontend_file_name;
+		}
+
+		return $frontend_file_url;
+	}
+
+	public function get_frontend_file_path( $frontend_file_name, $custom_file ) {
+		if ( $custom_file ) {
+			//$frontend_file = $this->get_frontend_file( $frontend_file_name );
+
+			//$frontend_file_path = $frontend_file->get_path();
+		} else {
+			$frontend_file_path = TS_MENTOR_ASSET_PATH . 'css/' . $frontend_file_name;
+		}
+
+		return $frontend_file_path;
+	}
 }
 
 Ts::instance();

@@ -16,11 +16,15 @@ define( 'TS_MENTOR_URL', plugins_url( '/', __FILE__ ) );
 define( 'TS_MENTOR_ASSET_URL', TS_MENTOR_URL.'/assets/' );
 define( 'TS_MENTOR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TS_MENTOR_PATH_INCLUDES', TS_MENTOR_PATH.'includes/' );
+define( 'TS_MENTOR_ASSET_PATH', TS_MENTOR_PATH.'assets/' );
 define( 'TS_MENTOR_PATH_MODULES', TS_MENTOR_PATH_INCLUDES.'modules' );
 define( 'TS_MENTOR_BASE', plugin_basename( __FILE__ ) );
 define( 'TS_MENTOR_FILE', __FILE__ );
+define( 'TS_MENTOR_UPLOAD_DIR', 'tsmentor' );
 //function ts_mentor_addon() {
-    
+if( !function_exists('is_plugin_active') ) { 
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+}  
     if ( ! is_plugin_active( 'elementor/elementor.php' ) ) {
         return;
     }else{

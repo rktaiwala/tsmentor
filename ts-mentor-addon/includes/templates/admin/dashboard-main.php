@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || die();
                 $tab_count = 1;
                 foreach ( self::get_tabs() as $slug => $data ) :
                     $slug = esc_attr( strtolower( $slug ) );
-                    $class = 'ts-tabs__nav-item--' . $slug;
+                    $class = 'ts-tabs-nav-item ts-tabs__nav-item--' . $slug;
 
                     if ( empty( $data['renderer'] ) || ! is_callable( $data['renderer'] ) ) {
                         $class .= ' nav-item-is--link';
@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || die();
                 endforeach;
                 ?>
 
-                <li><button disabled class="ha-dashboard-tabs__nav-btn ha-dashboard-btn ha-dashboard-btn--lg ha-dashboard-btn--save" type="submit"><?php esc_html_e( 'Save Settings', 'happy-elementor-addons' ); ?></button></li>
+                <li class="ts-tabs-nav-item ts-tabs__nav-item--save-btn"><button disabled class="ha-dashboard-tabs__nav-btn ha-dashboard-btn ha-dashboard-btn--lg ha-dashboard-btn--save" type="submit"><?php esc_html_e( 'Save Settings', 'happy-elementor-addons' ); ?></button></li>
                 </ul>
             </div>
             <div class="ha-dashboard-tabs__content box">
