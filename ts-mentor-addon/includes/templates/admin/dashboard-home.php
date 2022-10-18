@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
         <div class="ha-home-banner__content">
             <img class="ha-home-banner__logo" src="<?php echo TS_MENTOR_ASSET_URL; ?>imgs/admin/halogo.svg" alt="">
             <span class="ha-home-banner__divider"></span>
-            <h2><?php esc_html_e('Thanks a lot ', 'tsmentor'); ?><br><span><?php esc_html_e('for choosing HappyAddons', 'tsmentor'); ?></span></h2>
+            <h2><?php esc_html_e('Thanks a lot ', 'tsmentor'); ?><br><span><?php esc_html_e('for choosing Tsmentor Addons', 'tsmentor'); ?></span></h2>
         </div>
     </div>
     <div class="ha-home-body">

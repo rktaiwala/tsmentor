@@ -10,13 +10,13 @@ defined( 'ABSPATH' ) || die();
     
     <form class="ts-dashboard" id="ts-dashboard-form">
         <div class="ts-dashboard-tabs" role="tablist">
-            <div class="tabs is-boxed m-0">
+            <div class="ts-dashboard-tabs__nav is-boxed m-0">
                 <ul>
                 <?php
                 $tab_count = 1;
                 foreach ( self::get_tabs() as $slug => $data ) :
                     $slug = esc_attr( strtolower( $slug ) );
-                    $class = 'ts-tabs-nav-item ts-tabs__nav-item--' . $slug;
+                    $class = 'ts-dashboard-tabs__nav-item ts-tabs__nav-item--' . $slug;
 
                     if ( empty( $data['renderer'] ) || ! is_callable( $data['renderer'] ) ) {
                         $class .= ' nav-item-is--link';
@@ -43,10 +43,10 @@ defined( 'ABSPATH' ) || die();
                 endforeach;
                 ?>
 
-                <li class="ts-tabs-nav-item ts-tabs__nav-item--save-btn"><button disabled class="ha-dashboard-tabs__nav-btn ha-dashboard-btn ha-dashboard-btn--lg ha-dashboard-btn--save" type="submit"><?php esc_html_e( 'Save Settings', 'happy-elementor-addons' ); ?></button></li>
+                <li class="ts-dashboard-tabs__nav-item ts-tabs__nav-item--save-btn"><button disabled class="ha-dashboard-tabs__nav-btn ha-dashboard-btn ha-dashboard-btn--lg ha-dashboard-btn--save" type="submit"><?php esc_html_e( 'Save Settings', 'happy-elementor-addons' ); ?></button></li>
                 </ul>
             </div>
-            <div class="ha-dashboard-tabs__content box">
+            <div class="ts-dashboard-tabs__content box">
                 <?php
                 $tab_count = 1;
                 foreach ( self::get_tabs() as $slug => $data ) :

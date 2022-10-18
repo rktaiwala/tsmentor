@@ -40,7 +40,7 @@ class Dashboard {
 
         
     }
-    public static function  enqueue_scripts(){
+    public static function  enqueue_scripts($hook){
         wp_enqueue_style(
             'tsmentor-css',
             (TS_MENTOR_ASSET_URL . '/admin/css/tsmentor.css'),
@@ -55,6 +55,29 @@ class Dashboard {
                 TS_MENTOR_VERSION
             );
         }
+        if ( self::$menu_slug !== $hook || ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'tsmentor-addons-dashboard',
+            TS_MENTOR_ASSET_URL . 'admin/js/dashboard.min.js',
+            [ 'jquery' ],
+            TS_MENTOR_VERSION,
+            true
+        );
+
+        wp_localize_script(
+            'tsmentor-addons-dashboard',
+            'TSDashboard',
+            [
+                'nonce' => wp_create_nonce( self::WIDGETS_NONCE ),
+                'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                'action' => self::WIDGETS_NONCE,
+                'saveChangesLabel' => esc_html__( 'Save Changes', 'tsmentor' ),
+                'savedLabel' => esc_html__( 'Changes Saved', 'tsmentor' ),
+            ]
+        );
     }
     public static function is_page() {
         return ( isset( $_GET['page'] ) && ( $_GET['page'] === self::PAGE_SLUG ) );
